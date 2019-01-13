@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Square One</title>
+    <!-- Bootstrap CSS CDN -->
+    <!-- Bootstrap CSS CDN {{ url_for('static',filename='style.css') }}-->
+    <link rel="stylesheet" href="{{ url_for('static',filename='bootstrap3.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='fontawesome/web-fonts-with-css/css/fontawesome-all.min.css') }}">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>SQUARE ONE</h3>
+                <strong><img src="{{url_for('static', filename='sq1.png')}}" alt="Square1" height="80px" width="50px"></strong>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="{{ url_for('home')}}">
+                            <i class="fas fa-home"></i>
+                            Home
+                        </a>
+                </li>
+                <li><a href="{{ url_for('add_cart')}}"><i class="fas fa-utensils"></i>Order Food</a></li>
+                <li><a href="{{ url_for('wallet')}}"><i class="fas fa-rupee-sign"></i>Recharge Wallet</a></li>
+                <li><a href="{{ url_for('checkout')}}"><i></i>Cart</a></li>
+
+
+
+                <li>
+                    <a href="#">
+                            <i class="far fa-comments"></i>
+                            Feedback
+                        </a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+
+                    <div class="navbar-header">
+                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="fas fa-bars"></i>
+                                <!--span>Toggle</span-->
+                            </button>&nbsp;&nbsp;&nbsp;
+                        <span style="font-family:Bodoni MT;font-weight: bold;color: mediumvioletred;font-size: 20px;">A Place Where Taste Meets Quality</span>
+                    </div>
+
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <form class="navbar-form" role="search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                                        </div>
+                                        &nbsp; &nbsp;
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#signup-modal"><i class="fas fa-user-plus"></i>SignUp</button>
+
+                                        </div>
+                                        &nbsp; &nbsp;
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#login-modal"><i class="fas fa-user">Login</i></button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="line"></div>
+            <!-- ###########SignUp Modal###########-->
+            <!-- Modal -->
+            <div id="signup-modal" class="modal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" align="center">SignUp</h4>
+                        </div>
+                        <form id="signup" method="post" action="/signup">
+                            <br><br>
+                            <div class="row">
+                                <div class="col-lg-4 col-lg-offset-2">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="far fa-id-badge"></i></span>
+                                        <input id="roll" type="number" class="form-control" name="roll" placeholder="Roll No." style="width:300px ;">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-4 col-lg-offset-2">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fas fa-envelope"></i></span>
+                                        <input id="username" type="text" class="form-control" name="username" placeholder="Name" style="width:300px ;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-4 col-lg-offset-2">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fas fa-envelope"></i></span>
+                                        <input id="email" type="email" class="form-control" name="email" placeholder="Email" style="width:300px ;">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-4 col-lg-offset-2">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fas fa-key"></i></span>
+                                        <input id="password" type="password" class="form-control" name="password" placeholder="Password" style="width:300px ;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-4 col-lg-offset-2">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fas fa-key"></i></span>
+                                        <input id="cpassword" type="password" class="form-control" name="cpassword" placeholder="Confirm Password" style="width:300px ;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+                            <button type="submit" class="btn btn-success" style="display: block;margin:auto">
+    <i class="fa fa-arrow-circle-right fa-lg"></i> Submit
+</button><br><br>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="login-modal" class="modal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" align="center">Login</h4>
+                        </div>
+                        <form id="login" method="post" action="/login">
+                            <br><br>
+                            <div class="row">
+                                <div class="col-lg-4 col-lg-offset-2">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="far fa-id-badge"></i></span>
+                                        <input id="lroll" type="text" class="form-control" name="roll" placeholder="Roll No." style="width:300px ;">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-4 col-lg-offset-2">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fas fa-key"></i></span>
+                                        <input id="lpassword" type="password" class="form-control" name="password" placeholder="Password" style="width:300px ;">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <br>
+                            <button type="submit" class="btn btn-success" style="display: block;margin:auto">
+    <i class="fa fa-arrow-circle-right fa-lg"></i> Login
+</button><br><br>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+            <section id="menu">
+                <h3 align="center" style="color: chartreuse">What Would you Like To Have Dear??</h3>
+                <br>
+                <div id="choices">
+                    <a href="#veg"><button type="button" class="btn btn-primary">Vegeterian</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="#nonveg"><button type="button" class="btn btn-warning">Non-Vegeterian</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="#snacks"><button type="button" class="btn btn-danger">Snacks</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="#drinks"><button type="button" class="btn btn-info">Drinks</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <br><br>
+                
+                <div class="container" id="veg">
+                    <h2>Veg Section:</h2>
+                    
+                    <br><br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='alooparatha.jpg')}}" alt="aloo paratha">
+
+                                <h4><b>Aloo Paratha<span class="pull-right"><i class="fas fa-rupee-sign"></i>30</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="aloo30 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="aloo30 btn btn-warning pull-right">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='gobi.PNG')}}" alt="Gobhi Paratha">
+
+                                <h4><b>Gobhi Paratha<span class="pull-right"><i class="fas fa-rupee-sign"></i>30</span></b></h4>
+                                <h6></h6>
+                               <button type="button" class="gob30 btn btn-primary">Add to Cart</button>
+                               <button type="button" class="gob30 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+
+                                <img src="{{url_for('static', filename='paneerparatha.jpg')}}" alt="Paneer Paratha">
+
+                                <h4><b>Paneer Paratha<span class="pull-right"><i class="fas fa-rupee-sign"></i>40</span></b></h4>
+                                <h6></h6>
+                              <button type="button" class="pan30 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="pan30 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='dahi.jpg')}}" alt="Curd">
+                                <h4><b>Curd<span class="pull-right"><i class="fas fa-rupee-sign"></i>20</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="cur20 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="cur20 pull-right btn btn-warning">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='vegkathiroll.jpg')}}" alt="Veg Kathi Roll">
+
+                                <h4><b>Veg Kathi Roll<span class="pull-right"><i class="fas fa-rupee-sign"></i>30</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="vegkat30 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="vegkat30 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='maggi.jpg')}}" alt="Maggi">
+
+                                <h4><b>Maggi<span class="pull-right"><i class="fas fa-rupee-sign"></i>25</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="mag25 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="mag25 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+
+                                <img src="{{url_for('static', filename='cholebhature.jpg')}}" alt="Chole Bhature">
+
+                                <h4><b>Chole Bhature<span class="pull-right"><i class="fas fa-rupee-sign"></i>50</span></b></h4>
+vegkat30                                 <h6></h6>
+                                <button type="button" class="cho50 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="cho50 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='pavbhaji.jpg')}}" alt="Pav Bhaji">
+                                <h4><b>Pav Bhaji<span class="pull-right"><i class="fas fa-rupee-sign"></i>40</span><pav40 /b></h4>
+                                <h6></h6>
+                                <button type="button" class ="pav40 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="pav40 pull-right btn btn-warning">Order Now</button>
+                           
+                        </div>
+                    </div>vegtha150 
+                    <br><br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='vegthali.jpg')}}" alt="Veg Thali">
+
+                                <h4><b>Veg Thali<span class="pull-right"><i class="fas fa-rupee-sign"></i>150</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="vegtha150 btn btn-primary">Add to Cart</button>
+                               <button type="button" class="vegtha150 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='dalmakhni.jpg')}}" alt="Dal Makhani">
+
+                                <h4><b>Dal Makhani<span class="pull-right"><i class="fas fa-rupee-sign"></i>25</span></b></h4>
+                                <h6></h6>
+                               <button type="button" class="dal25 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="dal25 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">cha25 
+
+                                <img src="{{url_for('static', filename='chanamasala.jpg')}}" alt="Chana Masala">
+
+                                <h4><b>Chana Masala<span class="pull-right"><i class="fas fa-rupee-sign"></i>25</span></b></h4>
+                                <h6></h6>
+                             <button type="button" class="cha25 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="cha25 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='mixveg.jpg')}}" alt="Mix Veg">
+                                <h4><b>Mix Veg<span class="pull-right"><i class="fas fa-rupee-sign"></i>25</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="mix25 tn btn-primary">Add to Cart</button>
+                                <button type="button" class="mix25 pull-right btn btn-warning">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='paneerlababdaar.jpg')}}" alt="Paneer Lababdaar">
+
+                                <h4><b>Paneer Lababdaar<span class="pull-right"><i class="fas fa-rupee-sign"></i>50</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="panlab50 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="panlab50 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='roti.jpg')}}" alt="Roti">
+
+                                <h4><b>Roti<span class="pull-right"><i class="fas fa-rupee-sign"></i>5</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="rot5 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="rot5 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+
+                                <img src="{{url_for('static', filename='lachaparantha.jpg')}}" alt="Lacha Paratha">
+
+                                <h4><b>Lacha Paratha<span class="pull-right"><i class="fas fa-rupee-sign"></i>10</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="lac10 btn btn-primary">Add to Cart</button>
+                              <button type="button" class="lac10 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='amritsarinaan.jpg')}}" alt="Amritsari Naan">
+                                <h4><b>Amritsari Naan<span class="pull-right"><i class="fas fa-rupee-sign"></i>15</span></b></h4>
+                                <h6></h6>
+                              <button type="button" class="amrnaa15 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="amrnaa15 pull-right btn btn-warning">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='butternaan.jpg')}}" alt="Butter Naan">
+
+                                <h4><b>Butter Naan<span class="pull-right"><i class="fas fa-rupee-sign"></i>15</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="butnaa15 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="butnaa15 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='naan.jpg')}}" alt="Naan">
+
+                                <h4><b>Naan<span class="pull-right"><i class="fas fa-rupee-sign"></i>10</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="naa10 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="naa10 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='rice.jpg')}}" alt="Rice">
+
+                                <h4><b>Rice<span class="pull-right"><i class="fas fa-rupee-sign"></i>10</span></b></h4>
+                                <h6></h6>
+                             <button type="button" class="ric10 btn btn-primary">Add to Cart</button>
+                            <button type="button" class="ric10 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                </div>
+                
+                <br>
+                
+                <div class="container" id="nonveg">
+                    <h2>Non-Veg Section:</h2>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='eggkathiroll.jpg')}}" alt="Egg Kathi Roll">
+
+                                <h4><b>Egg Kathi Roll<span class="pull-right"><i class="fas fa-rupee-sign"></i>40</span></b></h4>
+                                <h6></h6>
+                             <button type="button" class="egrol40 btn btn-primary">Add to Cart</button>
+                            <button type="button" class="egrol40 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='ChickenKathiRoll.jpg')}}" alt="Chicken Kathi Roll">
+
+                                <h4><b>Chicken Kathi Roll<span class="pull-right"><i class="fas fa-rupee-sign"></i>70</span></b></h4>
+                                <h6></h6>
+                               <button type="button" class="chickrol70 btn btn-primary">Add to Cart</button>
+                             <button type="button" class="chickrol70 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='omlette.jpg')}}" alt="Omelettes">
+
+                                <h4><b>Omelettes<span class="pull-right"><i class="fas fa-rupee-sign"></i>30</span></b></h4>
+                                <h6></h6>
+                             <button type="button" class="omlet30 btn btn-primary">Add to Cart</button>
+                             <button type="button" class="omlet30 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='boiledegg.jpg')}}" alt="Boiled Egg">
+
+                                <h4><b>Boiled Egg<span class="pull-right"><i class="fas fa-rupee-sign"></i>15</span></b></h4>
+                                <h6></h6>
+                              <button type="button" class="boilegg15 btn btn-primary">Add to Cart</button>
+                            <button type="button" class="boilegg15 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='nonvegthali.jpg')}}" alt="Non Veg Thali">
+
+                                <h4><b>Non Veg Thali<span class="pull-right"><i class="fas fa-rupee-sign"></i>250</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="nonvth250 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="nonvth250 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='butterchicken.jpg')}}" alt="Butter Chicken">
+
+                                <h4><b>Butter Chicken<span class="pull-right"><i class="fas fa-rupee-sign"></i>150</span></b></h4>
+                                <h6></h6>
+                               <button type="button" class="butchick150 btn btn-primary">Add to Cart</button>
+                              <button type="button" class="butchick150 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <div class="container" id="snacks">
+                    <h2>Snacks Section:</h2>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='vegburger.jpg')}}" alt="Veg Burger">
+
+                                <h4><b>Veg Burger<span class="pull-right"><i class="fas fa-rupee-sign"></i>35</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="vegbur35 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="vegbur35 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='grilledsandwich.jpg')}}" alt="Grilled Sandwich">
+
+                                <h4><b>Grilled Sandwich<span class="pull-right"><i class="fas fa-rupee-sign"></i>40</span></b></h4>
+                                <h6></h6>
+                              <button type="button" class="grilsand40 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="grilsand40 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='stuffedkulcha.jpg')}}" alt="Stuffed Kulcha">
+
+                                <h4><b>Stuffed Kulcha<span class="pull-right"><i class="fas fa-rupee-sign"></i>20</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="stufkul20 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="stufkul20 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='samosa.jpg')}}" alt="Samosa">
+
+                                <h4><b>Samosa<span class="pull-right"><i class="fas fa-rupee-sign"></i>10</span></b></h4>
+                                <h6></h6>
+                               <button type="button" class="samo10 btn btn-primary">Add to Cart</button>
+                              <button type="button" class="samo10 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='samosachaat.jpg')}}" alt="Samosa Chaat">
+
+                                <h4><b>Samosa Chaat<span class="pull-right"><i class="fas fa-rupee-sign"></i>20</span></b></h4>
+                                <h6></h6>
+                               <button type="button" class="samocha20 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="samocha20 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='aloopatty.jpg')}}" alt="Aloo Patty">
+
+                                <h4><b>Aloo Patty<span class="pull-right"><i class="fas fa-rupee-sign"></i>15</span></b></h4>
+                                <h6></h6>
+                               <button type="button" class="alopat15 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="alopat15 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+
+                                <img src="{{url_for('static', filename='paneerpatty.jpg')}}" alt="Paneer Puff">
+
+                                <h4><b>Paneer Puff<span class="pull-right"><i class="fas fa-rupee-sign"></i>20</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="panpuf20 btn btn-primary">Add to Cart</button>
+                              <button type="button" class="panpuf20 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='alootikki.jpg')}}" alt="Aloo Tikki">
+                                <h4><b>Aloo Tikki<span class="pull-right"><i class="fas fa-rupee-sign"></i>35</span></b></h4>
+                                <h6></h6>
+                               <button type="button" class="alotik35 btn btn-primary">Add to Cart</button>
+                               <button type="button" class="alotik35 pull-right btn btn-warning">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='frenchfries.jpg')}}" alt="French Fries">
+
+                                <h4><b>French Fries<span class="pull-right"><i class="fas fa-rupee-sign"></i>30</span></b></h4>
+                                <h6></h6>
+                               <button type="button" class="frefri30 btn btn-primary">Add to Cart</button>
+                               <button type="button" class="frefri30 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='icecream.jpg')}}" alt="Ice Creams">
+
+                                <h4><b>Ice Creams<span class="pull-right"><i class="fas fa-rupee-sign"></i>50</span></b></h4>
+                                <h6></h6>
+                              <button type="button" class="icecre50 btn btn-primary">Add to Cart</button>
+                               <button type="button" class="icecre50 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+
+                                <img src="{{url_for('static', filename='biscuits.jpg')}}" alt="Biscuits">
+
+                                <h4><b>Biscuits<span class="pull-right"><i class="fas fa-rupee-sign"></i>10</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="bisc10 btn btn-primary">Add to Cart</button>
+                               <button type="button" class="bisc10 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='chocolates.jpg')}}" alt="Chocolate">
+                                <h4><b>Chocolate<span class="pull-right"><i class="fas fa-rupee-sign"></i>25</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="choco20 btn btn-primary">Add to Cart</button>
+                               <button type="button" class="choco20 pull-right btn btn-warning">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='lays.jpg')}}" alt="Lays">
+
+                                <h4><b>Lays<span class="pull-right"><i class="fas fa-rupee-sign"></i>20</span></b></h4>
+                                <h6></h6>
+                               <button type="button" class="lays20 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="lays20 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='kurkure.jpg')}}" alt="Kurkure">
+
+                                <h4><b>Kurkure<span class="pull-right"><i class="fas fa-rupee-sign"></i>20</span></b></h4>
+                                <h6></h6>
+                              <button type="button" class="kurk20 btn btn-primary">Add to Cart</button>
+                               <button type="button" class="kurk20 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+
+                                <img src="{{url_for('static', filename='madAngels.jpg')}}" alt="Bingo MadAngels">
+
+                                <h4><b>Bingo MadAngels<span class="pull-right"><i class="fas fa-rupee-sign"></i>20</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="madang20 btn btn-primary">Add to Cart</button>
+                            <button type="button" class="madang20 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='popcorn.jpeg')}}" alt="PopCorn">
+                                <h4><b>PopCorn<span class="pull-right"><i class="fas fa-rupee-sign"></i>30</span></b></h4>
+                                <h6></h6>
+                           <button type="button" class="popc30 btn btn-primary">Add to Cart</button>
+                            <button type="button" class="popc30 pull-right btn btn-warning">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <div class="container" id="drinks">
+                    <br><br>
+                    <h2>Drinks Section:</h2>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='milkpacket.jpg')}}" alt="Milk Packet">
+
+                                <h4><b>Milk Packet<span class="pull-right"><i class="fas fa-rupee-sign"></i>25</span></b></h4>
+                                <h6></h6>
+                            <button type="button" class="milk25 btn btn-primary">Add to Cart</button>
+                               <button type="button" class="milk25 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='soyamilk.jpg')}}" alt="Soya Milk Packet">
+
+                                <h4><b>Soya Milk Packet<span class="pull-right"><i class="fas fa-rupee-sign"></i>30</span></b></h4>
+                                <h6></h6>
+                               <button type="button" class="soyamil30 btn btn-primary">Add to Cart</button>
+                             <button type="button" class="soyamil30 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='colddrinks.jpg')}}" alt="Cold Drinks">
+
+                                <h4><b>Cold Drinks<span class="pull-right"><i class="fas fa-rupee-sign"></i>35</span></b></h4>
+                                <h6></h6>
+                             <button type="button" class="codr35 btn btn-primary">Add to Cart</button>
+                           <button type="button" class="codr35 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='realjuice.jpg')}}" alt="Real Juice">
+
+                                <h4><b>Real Juice<span class="pull-right"><i class="fas fa-rupee-sign"></i>20</span></b></h4>
+                                <h6></h6>
+                         <button type="button" class="reju20 btn btn-primary">Add to Cart</button>
+                                <button type="button" class="reju20 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='fruitbeer.jpg')}}" alt="Fruit Beer">
+
+                                <h4><b>Fruit Beer<span class="pull-right"><i class="fas fa-rupee-sign"></i>100</span></b></h4>
+                                <h6></h6>
+                              <button type="button" class="frube100 btn btn-primary">Add to Cart</button>
+                               <button type="button" class="frube100 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='flavouredmilk.jpg')}}" alt="Flavoured Milk">
+
+                                <h4><b>Flavoured Milk<span class="pull-right"><i class="fas fa-rupee-sign"></i>200</span></b></h4>
+                                <h6></h6>
+                              <button type="button" class="flamilk200 btn btn-primary">Add to Cart</button>
+                               <button type="button" class="flamilk200 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+
+                                <img src="{{url_for('static', filename='patialasweetlassi.jpg')}}" alt="Patiala Lassi Sweet">
+
+                                <h4><b>Patiala Lassi Sweet<span class="pull-right"><i class="fas fa-rupee-sign"></i>30</span></b></h4>
+                                <h6></h6>
+                             <button type="button" class="lassw30 btn btn-primary">Add to Cart</button>
+                               <button type="button" class="lassw30 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='patialaSaltlassi.jpg')}}" alt="Patiala Lassi Salt">
+                                <h4><b>Patiala Lassi Salt<span class="pull-right"><i class="fas fa-rupee-sign"></i>30</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="lassa30 btn btn-primary">Add to Cart</button>
+                               <button type="button" class="lassa30 pull-right btn btn-warning">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='tea.jpg')}}" alt="Tea">
+
+                                <h4><b>Tea<span class="pull-right"><i class="fas fa-rupee-sign"></i>10</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="tea10 btn btn-primary">Add to Cart</button>
+                           <button type="button" class="tea10 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img src="{{url_for('static', filename='coffee.jpg')}}" alt="Coffee">
+
+                                <h4><b>Coffee<span class="pull-right"><i class="fas fa-rupee-sign"></i>10</span></b></h4>
+                                <h6></h6>
+                          <button type="button" class="coff10 btn btn-primary">Add to Cart</button>
+                               <button type="button" class="coff10 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+
+                                <img src="{{url_for('static', filename='minerealwater.PNG')}}" alt="Minereal Water">
+
+                                <h4><b>Minereal Water<span class="pull-right"><i class="fas fa-rupee-sign"></i>15</span></b></h4>
+                                <h6></h6>
+                                <button type="button" class="minwat20 btn btn-primary">Add to Cart</button>
+                               <button type="button" class="minwat20 pull-right btn btn-warning">Order Now</button>
+
+
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <br><br>
+                </div>
+            </section>
+                <br><br>
+            <br>
+
+
+            <!-- *********************** HOME-FOOTER ******************* -->
+            <footer id="main-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center">
+                            <h3 class="h3 pt-3">$huVik-Cj</h3>
+                            <p class="">Copyright &copy; 2018</p>
+                            <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#contactModal">ContactUs</button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </footer>
+
+
+            <p>irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+     <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });  
+});
+    
+    $(document.body).on('click','div.card button',function(){
+      const prodId=$( this ).attr('class').split(' ')[0];
+      console.log(prodId);
+        $.ajax({
+          url: 'http://localhost:5000/menu', //server url
+          type: 'POST',    //passing data as post method
+          dataType: 'json', // returning data as json
+          data: {pid:prodId},  //form values
+          success:function()
+          {
+            console.log("hello");  //response from the server given as alert message
+          }
+        });
+        var text=$(this).text();
+        if(text=='Add to Cart'){
+            $(this).text('Added to Cart');
+        }
+        else if(text=='Order Now'){
+            $.ajax({
+          url: 'http://localhost:5000/cart', //server url
+          type: 'GET',    //passing data as post method
+          //dataType: 'json', // returning data as json
+          //data: {pid:prodId},  //form values
+          success:function()
+          {window.location.href="cart";
+            console.log("GO TO CART");  //response from the server given as alert message
+          }
+        });
+            
+        }
+});
+    
+    /*$(document.body).on('click','div.card a button',function(){
+    var text=$(this).text();
+        if(text=='Add to Cart'){
+            $(this).text('Added to Cart');
+        }
+        else if(text=='Order Now'){
+            $.ajax({
+          url: 'http://localhost:5000/cart', //server url
+          type: 'GET',    //passing data as post method
+          //dataType: 'json', // returning data as json
+          //data: {pid:prodId},  //form values
+          success:function()
+          {window.location.href="cart";
+            console.log("GO TO CART");  //response from the server given as alert message
+          }
+        });
+            
+        }
+    });*/
+    
+    </script>
+    <!-- {{ url_for('static', filename='customjs.js') }}-->
+    <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap3.min.js') }}"></script>
+    <!--script type="text/javascript" src="{{ url_for('static', filename='customjs.js') }}"></script-->
+</body>
+
+</html>

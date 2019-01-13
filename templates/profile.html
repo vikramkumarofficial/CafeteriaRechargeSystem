@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Profile</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static',filename='menu.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+  .fa-money{
+    font-size:55px;
+  }
+  </style>
+</head>
+<body>
+
+ <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-md navbar-light mb-3">
+    <div class="container py-0">
+      <a href="#"  id="branding" class="navbar-brand animated zoomIn"></a>
+        <a href="{{url_for('checkout')}}"  class="d-md-none ml-auto"><span class="fa fa-shopping-basket"></span> <span class="badge badge-pill badge-danger">{{count}}</span></a>
+      <!-- </li> -->
+      <button class="navbar-toggler ml-2" data-toggle="collapse" data-target="#navNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navNav">
+          <ul class="navbar-nav ml-auto mr-2">
+            <li class="nav-items">
+               <!-- a href="{{ url_for('home')}}" -->
+              <a href="{{ url_for('home')}}" class="nav-link">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('add_cart')}}" class="nav-link">Order Food</a>   
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-user text-info"></i> {{userid}}
+              </a>
+              <div class="dropdown-menu bg-light text-danger">
+                <a href="{{ url_for('profile')}}" class="dropdown-item text-success">
+                  <i class="fa fa-user-circle  text-success"></i> Profile
+                </a>
+                <a href="#" class="dropdown-item text-warning">
+                  <i class="fa fa-heart text-warning"></i> Favourite
+                </a>
+                <a href="{{ url_for('logout')}}" class="dropdown-item text-danger">
+                  <i class="fa fa-user-times text-danger"></i> Logout
+                </a>
+              </div>
+            </li>
+            <li class="nav-items">
+              <a href="{{url_for('checkout')}}"  class="nav-link d-none d-md-block"><span class="fa fa-shopping-basket"></span> <span class="badge badge-pill badge-danger">{{count}}</span></a>
+            </li>
+          </ul>
+          <!-- <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Search</button>
+          </form> -->
+          <form action="" class="form-inline mt-3">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#search"><i class="fa fa-search"></i></button>
+              </div
+            </div>
+          </form>
+
+      </div>
+    </div>
+  </nav>
+
+
+
+  <header >
+    <div class="pl-5 bg-primary text-white">
+      <div class="row">
+        <div class="col-md-6 py-4">
+          <h1><i class="fa fa-user"></i> Profile</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ACTIONS -->
+  <section id="action" class="py-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 mr-auto">
+          <a href="{{ url_for('home')}}" class="btn btn-light btn-block">
+            <i class="fa fa-arrow-left"></i> Back To Home
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#passwordModal">
+            <i class="fa fa-lock"></i> Change Password
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="#" class="btn btn-danger btn-block" id="deleteac">
+            <i class="fa fa-remove"></i> Delete Account
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-light">
+    <!-- PROFILE EDIT -->
+    <section id="profile">
+      <div class="container ">
+        <div class="row">
+
+          <!-- AVTAR -->
+          <div class="col-md-3">
+            <h3>Your Avatar</h3>
+              
+            <img src="{{url_for('static', filename='avatar.png')}}" alt="" class="d-block img-fluid mb-3">
+            <button class="btn btn-primary btn-block">Edit Image</button>
+            <button class="btn btn-danger btn-block">Delete Image</button>
+          </div>
+
+          <!-- BASIC-INFO -->
+          <div class="col-md-9 my-2">
+            <div class="card border border-dark">
+              <div class="card-header">
+                <h4>Basic Info</h4>
+              </div>
+              <div class="card-body">
+                <form>
+
+                  <!-- NAME -->
+                  <div class="form-group">
+                    <label for="Name">Name</label>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01"><i class="fa fa-user"></i></label>
+                      </div>
+                      <input type="text" class="form-control is-valid" value={{user.name}} readonly>
+                    </div>
+                  </div>
+
+                  <!-- COLLEGE-ID -->
+                  <div class="form-group">
+                    <label for="id">College Id</label>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01"><i class="fa fa-id-card"></i></label>
+                      </div>
+                      <input type="number" class="form-control is-valid" value={{user.roll_no}} readonly>
+                    </div>
+                  </div>
+
+                  <!-- EMAIL -->
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01"><i class="fa fa-envelope"></i></label>
+                      </div>
+                      <input type="text" class="form-control is-valid" value={{user.email_id}} readonly>
+                    </div>
+                  </div>
+
+                  <!-- PHONE-NUMBER -->
+                  <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">+91-</label>
+                      </div>
+                      <input type="number" class="form-control is-valid" value="9876543210" readonly>
+                    </div>
+                  </div>
+                  <!-- <div class="form-group">
+                    <label for="body">Bio</label>
+                    <textarea name="editor1" class="form-control">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur vel aliquam a commodi eligendi, esse quos perspiciatis, quas aliquid voluptates iure. Voluptatibus nisi iste voluptatum maxime dicta quisquam, nihil id!</textarea>
+                  </div> -->
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-md-3">
+            <h3>Your Avatar</h3>
+            <img src="img/avatar.png" alt="" class="d-block img-fluid mb-3">
+            <button class="btn btn-primary btn-block">Edit Image</button>
+            <button class="btn btn-danger btn-block">Delete Image</button>
+          </div> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- E-WALLET -->
+
+    <!-- <div class="">
+      <div class="">
+        <div class="container">
+
+          <div class="card border border-danger rounded">
+            <div class="card-body">
+              <div class="d-inline">
+                <i class="fa fa-money pl-2"></i>
+              </div>
+              <div class="d-inline">
+                  <h3 class="">Rs:</h3>
+              </div>
+              <div class="d-inline">
+                <button class="btn btn-info">Add Money</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 my-2">
+            <div class="card border border-info">
+              <div class="card-header text-center">
+                <h4>Wallet</h4>
+              </div>
+              <div class="card-body">
+                <div class="input-group mb-3">
+                    
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Rs : </label>
+                  </div>
+                  <input type="number" name="wallet" class="addmoney form-control form-control-lg" value="100" min="100" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <button class="btn btn-lg btn-success" id="rzp-button1" type="submit">Add Money</button>
+                  </div>
+                        
+                </div>
+              </div>
+              <div class="card-header text-center text-primary">
+                <h5>Current Balance:</h5>
+              </div>
+              <div class="card-body">
+               <h5 style="text-align: center"><i class="fa fa-inr" aria-hidden="true"></i>{{user.balance}}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <!-- *********************** HOME-FOOTER ******************* -->
+    <footer id="main-footer" class=" text-info bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <h3 class="h3 pt-2">$huVik-Cj</h3>
+            <p class="">Copyright &copy; 2018</p>
+            <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#contactModal">ContactUs</button>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+
+
+
+    <!-- ************************* CONTACT-MODAL ******************** -->
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-secondary">
+          <div class="modal-header">
+            <h5 class="modal-title " id="contactModalTitle">Contact Us</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"><i class="fa fa-times-circle text-danger"></i></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <!-- NAME -->
+                <div class="form-group">
+                  <label for="cname">Name</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01"><i class="fa fa-user-md"></i></label>
+                    </div>
+                    <input type="text" class="form-control is-valid" placeholder="Name">
+                  </div>
+                </div>
+                <!-- EMAIL -->
+                <div class="form-group">
+                  <label for="cemail">Email</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01"><i class="fa fa-envelope"></i></label>
+                    </div>
+                    <input type="text" class="form-control is-valid" placeholder="Email">
+                  </div>
+                </div>
+                <!-- TEXT-AREA -->
+                <div class="form-group">
+                  <label for="cmessage">Message</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01"><i class="fa fa-pencil"></i></label>
+                    </div>
+                    <textarea class="form-control" placeholder="Your valuable suggestions here."></textarea>
+                  </div>
+                </div>
+              </form>
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-open"></i> SUBMIT</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- PASSWORD MODAL -->
+    <div class="modal fade" id="passwordModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Change Password</h5>
+            <button class="close" data-dismiss="modal"><span>&times;</span></button>
+          </div>
+          <div class="modal-body">
+           <form action="/passupdate" method="post">
+                      <input type="password" class="form-control form-control-lg my-1" placeholder="Password" name="opassword">
+                      <input type="password" class="form-control form-control-lg my-1" placeholder="Password" name="password">
+                      <input type="password" class="form-control form-control-lg my-1" placeholder="Confirm-Password" name="cpassword">
+                      <button class="btn btn-success btn-block my-1" type="submit">SUBMIT</button>
+                            </form>
+            <!--form action="/passupdate" method="post">
+                <div class="form-group">
+                <label for="name">Current Password</label>
+                <input type="password" class="form-control" name="cpass">
+              </div>
+              <div class="form-group">
+                <label for="name">New Password</label>
+                <input type="password" class="form-control" name="npass">
+              </div>
+              <div class="form-group">
+                <label for="name">Confirm Password</label>
+                <input type="password" class="form-control">
+              </div>
+            
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            <button class="btn btn-primary" data-dismiss="modal" type="submit"><i class="fa fa-wrench"></i> Update Password</button>
+          </div>
+                </form-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!--    *****************SEARCH-MODAL**********************-->
+<div class="modal fade" id="search" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">SEARCH RESULTS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-5">
+            <img src="https://www.vegrecipesofindia.com/wp-content/uploads/2012/05/paneer-paratha-with-mango-pickle.jpg" alt="food-pic" class="img-fluid" style="height:100px;width:100px">
+          </div>
+          <div class="col-7">
+              <h4>Paneer Prathan</h4>
+              <h5><i class="fa fa-inr"></i> 25</h5>
+              <button type="submit" class="btn btn-success">Add To Cart</button>
+              <button type="submit" class="btn btn-">Order Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--******************************END OF SEARCH MODAL****************************-->
+
+    <!-- JAVASCRIPT -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
+      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        
+        $(document.body).on('click','#deleteac',function(){
+             $.ajax({
+          url: 'http://localhost:5000/deleteaccount', //server url
+          type: 'POST',    //passing data as post method
+          dataType: 'json', // returning data as json
+         // data: {credit:total},  //form values
+           success:function(data)
+        {console.log(data.message);
+            if (data.message=='deleted')
+         window.location.href='/'
+         
+            
+        } 
+        });
+        });
+        
+       $(document.body).on('click','#rzp-button1',function(){
+        var total=+$('.addmoney').val();
+        
+         var options = {
+    "key": "rzp_test_ltGbBSkdqhYwIk",
+    "amount": (total*100), // 2000 paise = INR 20
+    "name": "Square One Private Limited",
+    "description": "Wallet Recharge",
+    "image": "https://s3-media2.fl.yelpcdn.com/bphoto/r7MPtfAU06ECd0DjtuYt9Q/ls.jpg",
+    "handler": function (response){
+        var msg='RECHARGE SUCCESSFUL.TRANSACTION NO.--'+response.razorpay_payment_id;
+        alert(msg);
+        $.ajax({
+          url: 'http://localhost:5000/rechargewallet', //server url
+          type: 'POST',    //passing data as post method
+          dataType: 'json', // returning data as json
+          data: {credit:total},  //form values
+           success:function(data)
+        {console.log(data.message);
+            window.alert(data.message);
+         window.location.href='profile'
+         
+            
+        } 
+        });
+    },
+    "prefill": {
+        "name": " ",
+        "email": " "
+    },
+    "notes": {
+        "address": " "
+    },
+    "theme": {
+        "color": "#F37254"
+    }
+};
+var rzp1 = new Razorpay(options);
+
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+        
+    });
+      </script>
+  </body>
+  </html>

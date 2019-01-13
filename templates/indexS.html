@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Home</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ url_for('static',filename='home.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.css" />
+  
+  <style>
+      .reviewstar{
+  font-size: 50px !important;
+}
+
+.fa {
+    font-size: 25px;
+}
+
+.checked {
+    color: orange;
+}
+
+/* Three column layout */
+.side {
+    float: left;
+    width: 15%;
+    margin-top:10px;
+}
+
+.middle {
+    margin-top:10px;
+    float: left;
+    width: 70%;
+}
+
+/* Place text to the right */
+.right {
+    text-align: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* The bar container */
+.bar-container {
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    color: white;
+}
+
+/* Individual bars */
+.bar-5 {width: 80%; height: 18px; background-color: #4CAF50;}
+.bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
+.bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
+.bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
+.bar-1 {width: 15%; height: 18px; background-color: #f44336;}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+    .side, .middle {
+        width: 100%;
+    }
+    .right {
+        display: none;
+    }
+}
+
+body {
+  overflow-x: hidden; }
+
+  .navbar{
+    background-color: rgba(245, 245, 245, 0.8);
+    box-shadow: 2px 2px 5px #F3676E;
+  }
+  .nav-link{
+    font-size: 1.5rem;
+    margin:0 5px 0 5px;
+  }
+.carousel-item {
+  height: 450px; }
+
+.carousel-image-1 {
+    background-image: url({{url_for('static',filename='aaloo.jpg')}}) ;
+  background-size: cover; }
+
+.carousel-image-2 {
+    background-image: url({{url_for('static',filename='bottlechef.jpeg')}});
+  background-size: cover; }
+
+.carousel-image-3 {
+    background-image: url({{url_for('static',filename='lights.jpg')}});
+  background-size: cover; }
+
+.extfa  {
+  font-size: 55px; }
+
+
+      
+  </style>
+  
+</head>
+<body>
+
+ <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-md navbar-light mb-3">
+    <div class="container py-0">
+      <a href="#"  id="branding" class="navbar-brand animated zoomIn"></a>
+        <a href="{{url_for('checkout')}}" class="d-md-none ml-auto"><span class="fa fa-shopping-basket"></span> <span class="badge badge-pill badge-danger">{{count}}</span></a>
+      <!-- </li> -->
+      <button class="navbar-toggler ml-2" data-toggle="collapse" data-target="#navNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navNav">
+          <ul class="navbar-nav ml-auto mr-2">
+            <li class="nav-items">
+               <!-- a href="{{ url_for('home')}}" -->
+              <a href="{{ url_for('home')}}" class="nav-link">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('add_cart')}}" class="nav-link">Order Food</a>   
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-user text-info"></i> {{userid}}
+              </a>
+              <div class="dropdown-menu bg-light text-danger">
+                <a href="{{ url_for('profile')}}" class="dropdown-item text-success">
+                  <i class="fa fa-user-circle  text-success"></i> Profile
+                </a>
+                <a href="#" class="dropdown-item text-warning">
+                  <i class="fa fa-heart text-warning"></i> Favourite
+                </a>
+                <a href="{{ url_for('logout')}}" class="dropdown-item text-danger">
+                  <i class="fa fa-user-times text-danger"></i> Logout
+                </a>
+              </div>
+            </li>
+            <li class="nav-items">
+              <a href="{{url_for('checkout')}}" class="nav-link d-none d-md-block"><span class="fa fa-shopping-basket"></span> <span class="badge badge-pill badge-danger">{{count}}</span></a>
+            </li>
+          </ul>
+          
+          <form action="" class="form-inline mt-3">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-success" data-toggle="modal" data-target="#search" type="button"><i class="fa fa-search"></i></button>
+              </div
+            </div>
+          </form>
+
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+
+  <!-- SHOWCASE SLIDER -->
+  <section id="showcase">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item carousel-image-1 active">
+          <div class="container">
+            <div class="carousel-caption d-none d-sm-block text-right mb-5">
+              <h1 class="display-3">Heading One</h1>
+              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae consequuntur architecto eius magni nobis nulla eaque. Deserunt sunt, distinctio quos.</p>
+              <!-- <a href="#" class="btn btn-danger btn-lg">Sign Up Now</a> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item carousel-image-2">
+          <div class="container">
+            <div class="carousel-caption d-none d-sm-block mb-5">
+              <h1 class="display-3">Heading Two</h1>
+              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae consequuntur architecto eius magni nobis nulla eaque. Deserunt sunt, distinctio quos.</p>
+              <!-- <a href="#" class="btn btn-primary btn-lg">Learn More</a> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item carousel-image-1">
+          <div class="container">
+            <div class="carousel-caption d-none d-sm-block text-right mb-5">
+              <h1 class="display-3">Heading Three</h1>
+              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae consequuntur architecto eius magni nobis nulla eaque. Deserunt sunt, distinctio quos.</p>
+              <!-- <a href="#" class="btn btn-success btn-lg">Learn More</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#myCarousel" data-slide="prev" class="carousel-control-prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+
+      <a href="#myCarousel" data-slide="next" class="carousel-control-next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- HOME ICON SECTION -->
+  <section id="home-icons" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 text-center">
+          <i class="extfa fa fa-cutlery mb-2"></i>
+          <h3>Eat</h3>
+          <p>One of the very nicest things about life is the way we must regularly stop whatever it is we are doing and devote our attention to eating.</p>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <i class="extfa fa fa-birthday-cake mb-2"></i>
+          <h3>Party</h3>
+          <p>Life may not be the party we hoped for, but while we're here, we should dance.</p>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <i class="extfa fa fa-comments mb-2"></i>
+          <h3>Socialize</h3>
+          <p>In order to "be a light" we need to "plug into" The Light!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOME HEADING SECTION >
+  <section id="home-heading" class="p-5">
+    <div class="dark-overlay">
+      <div class="row">
+        <div class="col">
+          <div class="container pt-5">
+            <h1>How may I help you?</h1>
+            <div class="dropdown">
+              <button class="btn btn-danger dropdown-toggle mt-2 " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Order Here
+              </button>
+              <div class="dropdown-menu bg-secondary rounded" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item text-warning" href="#">Square One</a>
+                <a class="dropdown-item text-warning" href="#">Burgrill</a>
+                <a class="dropdown-item text-warning" href="#">Hav-More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section-->
+
+ <!-- REVIEW SECTION -->
+  <section id="info" class="py-3">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-6 align-self-center">
+          <h3>Lorem Ipsum</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium beatae eaque quos eligendi, laboriosam. Culpa consequuntur illum facere id molestias.</p>
+          <a href="#" class="btn btn-outline-danger btn-lg">Learn More</a>
+        </div> -->
+        <div class="col-md-6">
+          <img src="img/coffeechef2.jpeg" class="img-fluid rounded-circle mt-2" alt="">
+        </div>
+        <div class="col-md-6 ">
+          <h3 class="mt-3">What Other's Say ... </h3>
+
+        <!-- <span class="heading">User Rating</span> -->
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <p>4.1 average based on 254 reviews.</p>
+        <hr style="border:3px solid #f1f1f1">
+
+        <div class="row mx-2">
+          <div class="side">
+            <div>5 star</div>
+          </div>
+          <div class="middle">
+            <div class="bar-container">
+              <div class="bar-5"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div>150</div>
+          </div>
+          <div class="side">
+            <div>4 star</div>
+          </div>
+          <div class="middle">
+            <div class="bar-container">
+              <div class="bar-4"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div>63</div>
+          </div>
+          <div class="side">
+            <div>3 star</div>
+          </div>
+          <div class="middle">
+            <div class="bar-container">
+              <div class="bar-3"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div>15</div>
+          </div>
+          <div class="side">
+            <div>2 star</div>
+          </div>
+          <div class="middle">
+            <div class="bar-container">
+              <div class="bar-2"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div>6</div>
+          </div>
+          <div class="side">
+            <div>1 star</div>
+          </div>
+          <div class="middle">
+            <div class="bar-container">
+              <div class="bar-1"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div>20</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col"></div>
+          <div class="col">
+            <div data-target="#review" data-toggle="modal" class="btn btn-lg btn-success mt-3 ">Review</div>
+          </div>
+          <div class="col"></div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY -->
+  <section id="gallery" class="py-5">
+    <div class="container">
+      <h1 class="text-center">Photo Gallery</h1>
+      <h4 class="text-center mb-5">You can close your eyes to reality but not to memories.</h4>
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <a href="img/party1.jpeg" data-toggle="lightbox" data-gallery="img-gallery">
+            <img src="{{url_for('static', filename='party1.jpeg')}}" class="img-fluid m-2">
+          </a>
+            
+        </div>
+        <div class="col-md-4">
+          <a href="{{url_for('static', filename='party4.jpeg')}}" data-toggle="lightbox" data-gallery="img-gallery">
+              
+            <img src="{{url_for('static', filename='party4.jpeg')}}" class="img-fluid m-2">
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="{{url_for('static', filename='party3.jpeg')}}" data-toggle="lightbox" data-gallery="img-gallery">
+            <img src="{{url_for('static', filename='party3.jpeg')}}" class="img-fluid m-2">
+          </a>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <a href="{{url_for('static', filename='party2.jpeg')}}" data-toggle="lightbox" data-gallery="img-gallery">
+            <img src="{{url_for('static', filename='party2.jpeg')}}" class="img-fluid m-2">
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="{{url_for('static', filename='party5.jpeg')}}" data-toggle="lightbox" data-gallery="img-gallery">
+            <img src="{{url_for('static', filename='party5.jpeg')}}" class="img-fluid m-2">
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="{{url_for('static', filename='party6.jpeg')}}" data-toggle="lightbox" data-gallery="img-gallery">
+            <img src="{{url_for('static', filename='party6.jpeg')}}" class="img-fluid m-2">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+        
+  <!--    *****************SEARCH-MODAL**********************-->
+<div class="modal fade" id="search" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">SEARCH RESULTS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-5">
+            <img src="https://www.vegrecipesofindia.com/wp-content/uploads/2012/05/paneer-paratha-with-mango-pickle.jpg" alt="food-pic" class="img-fluid" style="height:100px;width:100px">
+          </div>
+          <div class="col-7">
+              <h4>Paneer Prathan</h4>
+              <h5><i class="fa fa-inr"></i> 25</h5>
+              <button type="submit" class="btn btn-success">Add To Cart</button>
+              <button type="submit" class="btn btn-">Order Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--******************************END OF SEARCH MODAL****************************-->
+
+  <!-- NEWSLETTER SECTION -->
+  <!-- <section id="newsletter" class="text-center p-5 bg-dark text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1>Signup For Our Newsletter</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis magnam similique esse assumenda quasi repellendus illum perferendis quos aliquid possimus.</p>
+          <form class="form-inline justify-content-center">
+            <label class="sr-only" for="name">Name</label>
+            <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Enter Name">
+
+            <label class="sr-only" for="email">Email</label>
+            <input type="email" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Enter Email">
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="main-footer" class="text-center p-4">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p>Copyright 2017 &copy; Glozzom</p>
+        </div>
+      </div>
+    </div>
+  </footer> -->
+
+
+  <!-- VIDEO MODAL -->
+  <div class="modal fade" id="videoModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button class="close" data-dismiss="modal"><span>&times;</span></button>
+          <iframe src="" height="350" width="100%" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- *********************** FILE UPLOAD FOOTER ******************* -->
+<footer id="main-footer" class=" ">
+  <div class="container text-info">
+    <p class="lead text-center">Upload your memory to showcase</p>
+    <div class="row">
+      <div class="col-md-5 col-2"></div>
+      <div class="col-md-5 col-8">
+        <div class="form-group ml-2">
+          <input type="file" class="form-control-file">
+          <submit class="btn btn-primary btn-sm mt-2 ml-5" type="submit" style="font-size:10px"><i class="fa fa-upload"> Upload</i></submit>
+        </div>
+      </div>
+      <div class="col-md-4 col-2"></div>
+    </div>
+  </div>
+</footer>
+
+   
+    <!-- Review MODAL -->
+  <div class="modal fade" id="review" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mx-auto">Review</h5>
+      </div>
+      <div class="modal-body">
+        <div class="text-center" >
+          <span class="fa fa-star reviewstar checked" ></span>
+          <span class="fa fa-star reviewstar checked"></span>
+          <span class="fa fa-star reviewstar checked"></span>
+          <span class="fa fa-star reviewstar checked"></span>
+          <span class="fa fa-star reviewstar"></span>
+        </div>
+        <textarea name="reviewcmnt" rows="8" cols="" class="form-control mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, recusandae.</textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-user-times"></i> Close</button>
+        <input type="submit" class="btn btn-primary"><i class="fa fa-user-check" value="Submit"></i>
+      </div>
+    </div>
+  </div>
+</div>
+   
+   
+   
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='popper.min.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

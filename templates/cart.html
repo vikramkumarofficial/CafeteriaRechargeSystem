@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Square One</title>
+    <!-- Bootstrap CSS CDN {{ url_for('static',filename='style.css') }}-->
+    <link rel="stylesheet" href="{{ url_for('static',filename='bootstrap3.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='fontawesome/web-fonts-with-css/css/fontawesome-all.min.css') }}">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <style type="text/css">
+        #CartHeader{
+            text-align: center;
+            color: cornflowerblue;
+        }
+        table{
+            border-collapse: collapse;
+            margin: 0px auto;    
+        }
+        tr{
+            height: 50px;
+        }
+        tr,td{
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            color: black;
+        }
+        table,tr,td{
+            border: 3px solid red;
+           
+        }
+        
+    </style>
+    
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header" >
+                <h3>SQUARE ONE</h3>
+                <strong><img src="{{url_for('static', filename='sq1.png')}}" alt="Square1" height="80px" width="50px"></strong>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="{{ url_for('home')}}">
+                            <i class="fas fa-home"></i>
+                            Home
+                        </a>
+                </li>
+                <li><a href="{{ url_for('add_cart')}}"><i class="fas fa-utensils"></i>Order Food</a></li>
+                <li><a href="{{ url_for('wallet')}}"><i class="fas fa-rupee-sign"></i>Recharge Wallet</a></li>
+                <li><a href="{{ url_for('checkout')}}"><i></i>Cart</a></li>
+                <li>
+                    <a href="#">
+                            <i class="far fa-comments"></i>
+                            Feedback
+                        </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+
+                    <div class="navbar-header">
+                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="fas fa-bars"></i>
+                                <!--span>Toggle</span-->
+                            </button>&nbsp;&nbsp;&nbsp;
+                        <span style="font-family:Bodoni MT;font-weight: bold;color: mediumvioletred;font-size: 20px;">A Place Where Taste Meets Quality</span>
+                    </div>
+
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <form class="navbar-form" role="search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                                        </div>
+                                        &nbsp; &nbsp;
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-warning" type="button"><i class="fas fa-user-plus"></i>{{userid}}</button>
+
+                                        </div>
+                                        &nbsp; &nbsp;
+                                        <form method="post" action="/logout">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#logout-modal"><i class="fas fa-user">Logout</i></button>
+                                        </div>
+                                        </form>
+
+                                    </div>
+                                </form>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="line"></div>
+            <!-- ###########SignUp Modal###########-->
+            <!-- Modal -->
+            <div id="signup-modal" class="modal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" align="center">SignUp</h4>
+                        </div>
+                        <form id="signup" method="post" action="/signup">
+                            <br><br>
+                            <div class="row">
+                                <div class="col-lg-4 col-lg-offset-2">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="far fa-id-badge"></i></span>
+                                        <input id="roll" type="number" class="form-control" name="roll" placeholder="Roll No." style="width:300px ;">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-4 col-lg-offset-2">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fas fa-envelope"></i></span>
+                                        <input id="username" type="text" class="form-control" name="username" placeholder="Name" style="width:300px ;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-4 col-lg-offset-2">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fas fa-envelope"></i></span>
+                                        <input id="email" type="email" class="form-control" name="email" placeholder="Email" style="width:300px ;">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-4 col-lg-offset-2">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fas fa-key"></i></span>
+                                        <input id="password" type="password" class="form-control" name="password" placeholder="Password" style="width:300px ;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-4 col-lg-offset-2">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fas fa-key"></i></span>
+                                        <input id="cpassword" type="password" class="form-control" name="cpassword" placeholder="Confirm Password" style="width:300px ;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+                            <button type="submit" class="btn btn-success" style="display: block;margin:auto">
+    <i class="fa fa-arrow-circle-right fa-lg"></i> Submit
+</button><br><br>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="logout-modal" class="modal" role="dialog">
+                <div class="modal-dialog">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" align="center">Logout</h4>
+                        </div>
+                        <form id="logout" action="/logout" method="post">
+                            <br><br>
+                            <!--div class="row">
+                                <div class="col-lg-4 col-lg-offset-2">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="far fa-id-badge"></i></span>
+                                        <input id="lroll" type="text" class="form-control" name="roll" placeholder="Roll No." style="width:300px ;">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-4 col-lg-offset-2">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fas fa-key"></i></span>
+                                        <input id="lpassword" type="password" class="form-control" name="password" placeholder="Password" style="width:300px ;">
+                                    </div>
+                                </div>
+                            </div-->
+<h3 style="text-align: center">Click on Logout Button to logout else close the popup box</h3>
+
+                            <br>
+                            <button type="submit" class="btn btn-success" style="display: block;margin:auto">
+    <i class="fa fa-arrow-circle-right fa-lg"></i> Logout
+</button><br><br>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            
+            <br>
+            <section id='cart'>
+            <h3 id="CartHeader">Items in Your Cart:-</h3>
+            <br>
+            <div id="CartContent">
+                <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td>Price:</td>
+                        <td>Quantity:</td>
+                    </tr>
+                    {% for i in items %}
+                    <tr class="ordereditems">
+                        <td>{{i.product_name}}</td>
+                        <td class="prc">{{i.product_price}}</td>
+                        <td><div class="input-group">
+                                        <input type="number" min="1" class="form-control quantity" name="quantity"  value="1" style="width:100px ;">
+                                    </div></td>
+                    </tr>
+                    {% endfor %}
+                    <tr><td colspan="2"><button type="button" class="btn btn-danger token" id="btntot">Total Amount:</button></td>
+                    <td id="totamt"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" rowspan="2">
+                            <button type="button" class="btn btn-warning" id="rzp-button1">Proceed to Checkout</button>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                
+                
+            </div>
+            
+            </section>
+<br>
+
+            <!-- *********************** HOME-FOOTER ******************* -->
+            <footer id="main-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center">
+                            <h3 class="h3 pt-3">$huVik-Cj</h3>
+                            <p class="">Copyright &copy; 2018</p>
+                            <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#contactModal">ContactUs</button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </footer>
+
+
+            <p>irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    
+<script type="text/javascript">
+    $(document).ready(function () {
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+});
+
+    var i=0,total=0;
+    $(document.body).on('click','#btntot',function(){
+        total=0;
+        if($(this).hasClass('token')){$('.prc').each(function(){
+            
+            total+=((+$(this).html())* (+$('.quantity').eq(i).val()) );
+            i=i+1;
+          console.log(+$('.quantity').val());
+        
+    });
+        $('#totamt').html(total);}
+
+        
+    });
+    
+    $(document.body).on('click','#rzp-button1',function(){
+         var options = {
+    "key": "rzp_test_ltGbBSkdqhYwIk",
+    "amount": (total*100), // 2000 paise = INR 20
+    "name": "ChikramChamp",
+    "description": "Purchase Description",
+    "image": "/your_logo.png",
+    "handler": function (response){
+        alert(response.razorpay_payment_id);
+    },
+    "prefill": {
+        "name": "Vikram",
+        "email": "vikramkumar.official@gmail.com"
+    },
+    "notes": {
+        "address": "Hello World"
+    },
+    "theme": {
+        "color": "#F37254"
+    }
+};
+var rzp1 = new Razorpay(options);
+
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+        
+    });
+   
+    </script>
+    <!-- {{ url_for('static', filename='customjs.js') }}-->
+    <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap3.min.js') }}"></script>
+    <!--script src="{{ url_for('static', filename='customjs.js') }}"></script-->
+</body>
+</html>

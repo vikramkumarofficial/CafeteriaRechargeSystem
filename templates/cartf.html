@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static',filename='menu.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+  .fa-money{
+    font-size:55px;
+  }
+  </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light ">
+    <div class="container py-0">
+      <a href="#"  id="branding" class="navbar-brand animated zoomIn"></a>
+        <a href="#" class="d-md-none"><span class="fa fa-shopping-basket"></span> <span class="badge badge-pill badge-danger">4</span>
+      <button class="navbar-toggler ml-2" data-toggle="collapse" data-target="#navNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navNav">
+          <ul class="navbar-nav ml-auto mr-2">
+            <li class="nav-items">
+              <a href="#" class="nav-link">HOME</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">EXPLORE</a>
+              <div class="dropdown-menu bg-dark">
+                <a href="" class="dropdown-item bg-danger">Square 1</a>
+                <div class="dropdown-divider"></div>
+                <a href="" class="dropdown-item bg-warning">Burgrill</a>
+                <a href="" class="dropdown-item bg-success">Ice Patch</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-user text-info"></i> Name
+              </a>
+              <div class="dropdown-menu bg-light text-danger">
+                <a href="#" class="dropdown-item text-success">
+                  <i class="fa fa-user-circle  text-success"></i> Profile
+                </a>
+                <a href="#" class="dropdown-item text-warning">
+                  <i class="fa fa-heart text-warning"></i> Favourite
+                </a>
+                <a href="#" class="dropdown-item text-danger">
+                  <i class="fa fa-user-times text-danger"></i> Logout
+                </a>
+              </div>
+            </li>
+            <li class="nav-items">
+              <a href="#" data-target="#shoppingCart" data-toggle="modal" class="nav-link d-none d-md-block"><span class="fa fa-shopping-basket"></span> <span class="badge badge-pill badge-danger">4</span>
+              </a>
+            </li>
+          </ul>
+          <form action="/search" class="form-inline mt-3" method="post">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2" name="search">
+              <div class="input-group-append">
+                <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </form>
+
+      </div>
+    </div>
+  </nav>
+
+
+
+  <header >
+    <div class="pl-5 bg-primary text-white">
+      <div class="row">
+        <div class="col-md-6 py-4">
+          <h1><i class="fa fa-user"></i> Cart</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+      <br>
+      <br>
+      
+          <h4 class="modal-title text-center m-auto" id="contactModalTitle">Can I take your order?</h4>
+      
+  
+
+        </section>
+    </nav>
+    
+    
+
+<!-- JAVASCRIPT -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
+</body></html>
+
+  

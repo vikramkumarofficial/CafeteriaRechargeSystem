@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Invoice Details</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.css" />
+  <style>
+    /* Labels for checked inputs */
+    input:checked + label {
+      color: red;
+    }
+    input[type="checkbox"]:checked {
+      box-shadow: 0 0 0 3px hotpink;
+    }
+    .donedeliv{
+      box-shadow: 0 0 0 3px hotpink;
+    }
+  </style>
+</head>
+<body>
+
+  <hr style="height:20px;background:red;">
+
+  <h2 class="text-center mb-5">INVOICE</h2>
+
+  <div class="d-block">
+    <div class="ml-md-5 ml-2 ">
+      <div class="float-right mr-md-5" style="font-size:50px;">
+        <i class="fa fa-coffee"></i>
+      </div>
+      <h4>#Branding</h4>
+      <p class="lead">
+        Chandigarh-Patiala National Highway (NH- 64),<br>
+        Village Jansla, Rajpura,<br>
+        Punjab, 140401.
+      </p>
+    </div>
+
+  </div><br>
+
+
+
+<!-- ************************BILLING INFO*********************** -->
+  <div class="row">
+    <div class="col-6">
+      <h5 class="text-center">Bill To</h5>
+      <div class="lead">
+        <table class="table table-sm">
+          <tr>
+            <th>Name</th>
+            <td>{{name}}</td>
+          </tr>
+          <tr>
+            <th>Roll No.</th>
+            <td>{{roll}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <table class="table table-sm">
+        <h5 class="text-center">Billing Info</h5>
+        <tr>
+          <th>Invoice #</th>
+          <td>{{orderid}}</td>
+        </tr>
+        <tr>
+          <th>Invoice Date</th>
+          <td>{{date}}</td>
+        </tr>
+        <tr>
+          <th>Valid Through</th>
+          <td>{{date}}</td>
+        </tr>
+      </table>
+    </div>
+
+
+  </div>
+
+
+<!-- ***********************ITEMS*************************** -->
+  <div class="d-block mx-2 my-5">
+
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>#</th>
+            <th>Qty</th>
+            <th>Description</th>
+            <th>Unit Price</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for x in order %}
+          <tr class={{x.product_id}}>
+            <td><input name="my-checkbox" class="" id="opt-in1" type="checkbox" ></td>
+            <td>{{x.product_quantity}}</td>
+            <td><label for="opt-in1">{{x.product_name}}</label></td>
+            <td>{{x.product_price}}</td>
+            <td>{{x.product_quantity * x.product_price}}</td>
+          </tr>
+           {% endfor %}
+        </tbody>
+
+        <tfoot class="bg-dark text-light">
+          <tr class="">
+            <td colspan="4" class="text-right">SUBTOTAL</td>
+            <td>{{subtotal}}</td>
+          </tr>
+          <tr>
+            <td colspan="4" class="text-right">Sales Tax 5.0%</td>
+            <td>{{tax}}</td>
+          </tr>
+          <tr>
+            <td colspan="4" class="text-right">TOTAL</td>
+            <td>{{total}}</td>
+          </tr>
+        </tfoot>
+      </table>
+  </div>
+
+
+  <input type="submit" class="btn btn-lg btn-success btn-block my-2 deliv" value="Done">
+
+<!-- *******************TERMS**************** -->
+<section>
+  <h5 class="font-weight-bold ml-3 mt-5">Terms and Conditions</h5>
+  <ul>
+    <li>This reciept is valid only till midnight of the DOI</li>
+  </ul>
+</section>
+
+<hr style="height:20px;background:red;">
+
+
+
+  <!-- *************SCRIPT************ -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+  <script type="text/javascript">
+    $('.deliv').on('click',function(){
+      $('input:checked').addClass('donedeliv');
+      $('input:checked').attr('checked','true');
+    });
+  </script>
+
+
+</body>
+</html>

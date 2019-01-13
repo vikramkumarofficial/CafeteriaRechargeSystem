@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top">
+      <div class="container py-0">
+        <a href="#m"  id="branding" class="navbar-brand animated zoomIn"></a>
+        <button class="navbar-toggler ml-auto" data-toggle="collapse" data-target="#navNav"><span class="navbar-toggler-icon"></span></button>
+          `<div class="collapse navbar-collapse" id="navNav">
+            <ul class="navbar-nav ml-auto mr-2">
+              <li class="nav-items">
+                <a href="#" class="nav-link">HOME</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">EXPLORE</a>
+                <div class="dropdown-menu bg-dark">
+                  <a href="" class="dropdown-item bg-danger">Square 1</a>
+                  <div class="dropdown-divider"></div>
+                  <a href="" class="dropdown-item bg-warning">Burgrill</a>
+                  <a href="" class="dropdown-item bg-success">Ice Patch</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-user text-info"></i> Name
+                </a>
+                <div class="dropdown-menu bg-light text-danger">
+                  <a href="#" class="dropdown-item text-success">
+                    <i class="fa fa-user-circle  text-success"></i> Profile
+                  </a>
+                  <a href="#" class="dropdown-item text-warning">
+                    <i class="fa fa-heart text-warning"></i> Favourite
+                  </a>
+                  <a href="#" class="dropdown-item text-danger">
+                    <i class="fa fa-user-times text-danger"></i> Logout
+                  </a>
+                </div>
+              </li>
+              <li class="nav-items">
+                <a href="#" data-target="#shoppingCart" data-toggle="modal" class="nav-link"><span class="fa fa-shopping-basket"></span> <span class="badge badge-pill badge-danger">4</span>
+                </a>
+              </li>
+            </ul>
+            <!-- <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Search</button>
+            </form> -->
+            <form action="" class="form-inline mt-3">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-success" type="button"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            </form>
+        </div>`
+      </div>
+    </nav>
+  </header>
+
+  <!-- JUMBOTRON & MENU-SECTION-->
+  <div class="jumbo jumbo-fluid">
+  <div class="container">
+    <h1 class="display-4 text-center font-italic text-dark pt-5">SQUARE ONE</h1>
+    <p class="text-center font-weight-bold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, itaque? </p>
+  </div>
+  <div class="d-flex flex-row text-white align-items-stretch text-center">
+    <div class=" menu-head p-4 bg-danger" data-toggle="collapse" data-target="#beverages">Beverages</div>
+    <div class=" menu-head p-4 bg-secondary" data-toggle="collapse" data-target="#prathas">Prathas</div>
+    <div class=" menu-head p-4 bg-primary" data-toggle="collapse" data-target="#combos">Combos</div>
+    <div class=" menu-head p-4 bg-dark" data-toggle="collapse" data-target="#snacks">Snacks</div>
+  </div>
+</div>
+
+<div class="menu-items">
+
+  <!-- Beverages MENU -->
+  <div id="beverages" class="collapse show">
+    <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="img/aaloo.jpg" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Burger</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">$100</h3></div>
+            <!-- <a href="#" class="btn btn-dark mb-2">Order Now</a> -->
+            <div class="d-inline"><a href="#" class="btn btn-success mb-2 " role="button" aria-disabled="true">Add to cart</a></div>
+            <div class="d-inline"><a href="#" class="btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="img/aaloo.jpg" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Burger</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">$100</h3></div>
+            <!-- <a href="#" class="btn btn-dark mb-2">Order Now</a> -->
+            <div class="d-inline"><a href="#" class="btn btn-success mb-2 " role="button" aria-disabled="true">Add to cart</a></div>
+            <div class="d-inline"><a href="#" class="btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="img/aaloo.jpg" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Burger</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">$100</h3></div>
+            <!-- <a href="#" class="btn btn-dark mb-2">Order Now</a> -->
+            <div class="d-inline"><a href="#" class="btn btn-success mb-2 " role="button" aria-disabled="true">Add to cart</a></div>
+            <div class="d-inline"><a href="#" class="btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="img/aaloo.jpg" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Burger</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">$100</h3></div>
+            <!-- <a href="#" class="btn btn-dark mb-2">Order Now</a> -->
+            <div class="d-inline"><a href="#" class="btn btn-success mb-2 disabled" role="button" aria-disabled="true">Add to cart</a></div>
+            <div class="d-inline"><a href="#" class="btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</a></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Prathas MENU-->
+  <div id="prathas" class="collapse">
+    <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="img/aaloo.jpg" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Burger</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">$100</h3></div>
+            <!-- <a href="#" class="btn btn-dark mb-2">Order Now</a> -->
+            <div class="d-inline"><a href="#" class="btn btn-success mb-2 " role="button" aria-disabled="true">Add to cart</a></div>
+            <div class="d-inline"><a href="#" class="btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="img/aaloo.jpg" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Burger</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">$100</h3></div>
+            <!-- <a href="#" class="btn btn-dark mb-2">Order Now</a> -->
+            <div class="d-inline"><a href="#" class="btn btn-success mb-2 " role="button" aria-disabled="true">Add to cart</a></div>
+            <div class="d-inline"><a href="#" class="btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="img/aaloo.jpg" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Burger</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">$100</h3></div>
+            <!-- <a href="#" class="btn btn-dark mb-2">Order Now</a> -->
+            <div class="d-inline"><a href="#" class="btn btn-success mb-2 " role="button" aria-disabled="true">Add to cart</a></div>
+            <div class="d-inline"><a href="#" class="btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="img/aaloo.jpg" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Burger</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">$100</h3></div>
+            <!-- <a href="#" class="btn btn-dark mb-2">Order Now</a> -->
+            <div class="d-inline"><a href="#" class="btn btn-success mb-2 " role="button" aria-disabled="true">Add to cart</a></div>
+            <div class="d-inline"><a href="#" class="btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Combos MENU -->
+  <div id="combos" class="collapse">
+    <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-primary">
+            <img src="img/aaloo.jpg" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Burger</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">$100</h3></div>
+            <!-- <a href="#" class="btn btn-dark mb-2">Order Now</a> -->
+            <div class="d-inline"><a href="#" class="btn btn-success mb-2 " role="button" aria-disabled="true">Add to cart</a></div>
+            <div class="d-inline"><a href="#" class="btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-primary">
+            <img src="img/aaloo.jpg" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Burger</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">$100</h3></div>
+            <!-- <a href="#" class="btn btn-dark mb-2">Order Now</a> -->
+            <div class="d-inline"><a href="#" class="btn btn-success mb-2 " role="button" aria-disabled="true">Add to cart</a></div>
+            <div class="d-inline"><a href="#" class="btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-primary">
+            <img src="img/aaloo.jpg" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Burger</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">$100</h3></div>
+            <!-- <a href="#" class="btn btn-dark mb-2">Order Now</a> -->
+            <div class="d-inline"><a href="#" class="btn btn-success mb-2 " role="button" aria-disabled="true">Add to cart</a></div>
+            <div class="d-inline"><a href="#" class="btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-primary">
+            <img src="img/aaloo.jpg" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Burger</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">$100</h3></div>
+            <!-- <a href="#" class="btn btn-dark mb-2">Order Now</a> -->
+            <div class="d-inline"><a href="#" class="btn btn-success mb-2 " role="button" aria-disabled="true">Add to cart</a></div>
+            <div class="d-inline"><a href="#" class="btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Snacks MENU -->
+  <div id="snacks" class="collapse">
+    <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-dark">
+            <img src="img/aaloo.jpg" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Burger</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">$100</h3></div>
+            <!-- <a href="#" class="btn btn-dark mb-2">Order Now</a> -->
+            <div class="d-inline"><a href="#" class="btn btn-success mb-2 " role="button" aria-disabled="true">Add to cart</a></div>
+            <div class="d-inline"><a href="#" class="btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-dark">
+            <img src="img/aaloo.jpg" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Burger</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">$100</h3></div>
+            <!-- <a href="#" class="btn btn-dark mb-2">Order Now</a> -->
+            <div class="d-inline"><a href="#" class="btn btn-success mb-2 " role="button" aria-disabled="true">Add to cart</a></div>
+            <div class="d-inline"><a href="#" class="btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-dark">
+            <img src="img/aaloo.jpg" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Burger</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">$100</h3></div>
+            <!-- <a href="#" class="btn btn-dark mb-2">Order Now</a> -->
+            <div class="d-inline"><a href="#" class="btn btn-success mb-2 " role="button" aria-disabled="true">Add to cart</a></div>
+            <div class="d-inline"><a href="#" class="btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-dark">
+            <img src="img/aaloo.jpg" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Burger</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">$100</h3></div>
+            <!-- <a href="#" class="btn btn-dark mb-2">Order Now</a> -->
+            <div class="d-inline"><a href="#" class="btn btn-success mb-2 " role="button" aria-disabled="true">Add to cart</a></div>
+            <div class="d-inline"><a href="#" class="btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- JAVASCRIPT -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    $('.menu-head').click(function(){
+      $('.collapse').collapse('hide');
+    });
+  </script>
+</body>
+</html>

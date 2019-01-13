@@ -1,0 +1,38 @@
+body{
+background:url('../img/cookingchef2.jpeg') no-repeat 0 -200px !important;
+background-size: cover;
+}
+body .dark-overlay{
+   background: rgba(50, 146, 166, 0.6);
+}
+.navbar{
+  background-color: rgba(245, 245, 245, 0.8);
+  box-shadow: 2px 2px 5px #F3676E;
+}
+.nav-link{
+  font-size: 1.5rem;
+  margin:0 5px 0 5px;
+}
+
+#home-section{
+  margin-top: 5.3rem;
+}
+@media(max-width:576px){
+  #home-section{
+    margin-top: 4.4rem;
+  }
+}
+
+#home-section .container{
+  color: #D5CDCD;
+  font-size:1rem;
+}
+
+#home-section .card{
+  background-color: rgba(234, 172, 172, 0.4);
+  border-radius: 10%;
+  color: #6A0909;
+}
+#main-footer{
+  background: rgba(0,0,0,0.8);
+}

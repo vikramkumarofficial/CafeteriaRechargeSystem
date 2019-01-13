@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Glozzom Theme</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.css" />
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-md navbar-light ">
+    <div class="container py-0">
+      <a href="#"  id="branding" class="navbar-brand animated zoomIn"></a>
+        <a href="#" data-target="#shoppingCart" data-toggle="modal" class="d-md-none ml-auto"><span class="fa fa-shopping-basket"></span> <span class="badge badge-pill badge-danger">4</span></a>
+      </li>
+      <button class="navbar-toggler ml-2" data-toggle="collapse" data-target="#navNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navNav">
+          <ul class="navbar-nav ml-auto mr-2">
+            <li class="nav-items">
+              <a href="#" class="nav-link">HOME</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">EXPLORE</a>
+              <div class="dropdown-menu bg-dark">
+                <a href="" class="dropdown-item bg-danger">Square 1</a>
+                <div class="dropdown-divider"></div>
+                <a href="" class="dropdown-item bg-warning">Burgrill</a>
+                <a href="" class="dropdown-item bg-success">Ice Patch</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-user text-info"></i> Name
+              </a>
+              <div class="dropdown-menu bg-light text-danger">
+                <a href="#" class="dropdown-item text-success">
+                  <i class="fa fa-user-circle  text-success"></i> Profile
+                </a>
+                <a href="#" class="dropdown-item text-warning">
+                  <i class="fa fa-heart text-warning"></i> Favourite
+                </a>
+                <a href="#" class="dropdown-item text-danger">
+                  <i class="fa fa-user-times text-danger"></i> Logout
+                </a>
+              </div>
+            </li>
+            <li class="nav-items">
+              <a href="#" data-target="#shoppingCart" data-toggle="modal" class="nav-link d-none d-md-block"><span class="fa fa-shopping-basket"></span> <span class="badge badge-pill badge-danger">4</span></a>
+            </li>
+          </ul>
+          <!-- <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Search</button>
+          </form> -->
+          <form action="" class="form-inline mt-3">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-success" type="button"><i class="fa fa-search"></i></button>
+              </div
+            </div>
+          </form>
+
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+  <!-- SHOWCASE SLIDER -->
+  <section id="showcase">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item carousel-image-1 active">
+          <div class="container">
+            <div class="carousel-caption d-none d-sm-block text-right mb-5">
+              <h1 class="display-3">Heading One</h1>
+              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae consequuntur architecto eius magni nobis nulla eaque. Deserunt sunt, distinctio quos.</p>
+              <!-- <a href="#" class="btn btn-danger btn-lg">Sign Up Now</a> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item carousel-image-2">
+          <div class="container">
+            <div class="carousel-caption d-none d-sm-block mb-5">
+              <h1 class="display-3">Heading Two</h1>
+              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae consequuntur architecto eius magni nobis nulla eaque. Deserunt sunt, distinctio quos.</p>
+              <!-- <a href="#" class="btn btn-primary btn-lg">Learn More</a> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item carousel-image-1">
+          <div class="container">
+            <div class="carousel-caption d-none d-sm-block text-right mb-5">
+              <h1 class="display-3">Heading Three</h1>
+              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae consequuntur architecto eius magni nobis nulla eaque. Deserunt sunt, distinctio quos.</p>
+              <!-- <a href="#" class="btn btn-success btn-lg">Learn More</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#myCarousel" data-slide="prev" class="carousel-control-prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+
+      <a href="#myCarousel" data-slide="next" class="carousel-control-next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- HOME ICON SECTION -->
+  <section id="home-icons" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 text-center">
+          <i class="extfa fa fa-cutlery mb-2"></i>
+          <h3>Eat</h3>
+          <p>One of the very nicest things about life is the way we must regularly stop whatever it is we are doing and devote our attention to eating.</p>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <i class="extfa fa fa-birthday-cake mb-2"></i>
+          <h3>Party</h3>
+          <p>Life may not be the party we hoped for, but while we're here, we should dance.</p>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <i class="extfa fa fa-comments mb-2"></i>
+          <h3>Socialize</h3>
+          <p>In order to "be a light" we need to "plug into" The Light!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOME HEADING SECTION -->
+  <section id="home-heading" class="p-5">
+    <div class="dark-overlay">
+      <div class="row">
+        <div class="col">
+          <div class="container pt-5">
+            <h1>How may I help you?</h1>
+            <div class="dropdown">
+              <button class="btn btn-danger dropdown-toggle mt-2 " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Order Here
+              </button>
+              <div class="dropdown-menu bg-secondary rounded" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item text-warning" href="#">Square One</a>
+                <a class="dropdown-item text-warning" href="#">Burgrill</a>
+                <a class="dropdown-item text-warning" href="#">Hav-More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO SECTION -->
+  <section id="info" class="py-3">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-6 align-self-center">
+          <h3>Lorem Ipsum</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium beatae eaque quos eligendi, laboriosam. Culpa consequuntur illum facere id molestias.</p>
+          <a href="#" class="btn btn-outline-danger btn-lg">Learn More</a>
+        </div> -->
+        <div class="col-md-4">
+          <img src="img/coffeechef2.jpeg" class="img-fluid rounded-circle mt-2" alt="">
+        </div>
+        <div class="col-md-8 align-self-center">
+          <h3 class="">What Other's Say ... </h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium beatae eaque quos eligendi, laboriosam. Culpa consequuntur illum facere id molestias.</p>
+          <a href="#" class="btn btn-outline-danger btn-lg">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO PLAY SECTION -->
+  <section id="video-play">
+    <div class="dark-overlay">
+      <div class="row">
+        <div class="col">
+          <div class="container p-5">
+            <a
+              href="#"
+              class="video"
+              data-video="https://www.youtube.com/embed/qm006Aa1FSY"
+              data-toggle="modal"
+              data-target="#videoModal"
+            >
+              <i class="extfa fa fa-play"></i>
+            </a>
+            <h1>...because every picture tells a story</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY -->
+  <section id="gallery" class="py-5">
+    <div class="container">
+      <h1 class="text-center">Photo Gallery</h1>
+      <h4 class="text-center mb-5">You can close your eyes to reality but not to memories.</h4>
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <a href="img/party1.jpeg" data-toggle="lightbox" data-gallery="img-gallery">
+            <img src="img/party1.jpeg" class="img-fluid m-2">
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="img/party4.jpeg" data-toggle="lightbox" data-gallery="img-gallery">
+            <img src="img/party4.jpeg" class="img-fluid m-2">
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="img/party3.jpeg" data-toggle="lightbox" data-gallery="img-gallery">
+            <img src="img/party3.jpeg" class="img-fluid m-2">
+          </a>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <a href="img/party2.jpeg" data-toggle="lightbox" data-gallery="img-gallery">
+            <img src="img/party2.jpeg" class="img-fluid m-2">
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="img/party5.jpeg" data-toggle="lightbox" data-gallery="img-gallery">
+            <img src="img/party5.jpeg" class="img-fluid m-2">
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="img/party6.jpeg" data-toggle="lightbox" data-gallery="img-gallery">
+            <img src="img/party6.jpeg" class="img-fluid m-2">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER SECTION -->
+  <!-- <section id="newsletter" class="text-center p-5 bg-dark text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1>Signup For Our Newsletter</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis magnam similique esse assumenda quasi repellendus illum perferendis quos aliquid possimus.</p>
+          <form class="form-inline justify-content-center">
+            <label class="sr-only" for="name">Name</label>
+            <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Enter Name">
+
+            <label class="sr-only" for="email">Email</label>
+            <input type="email" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Enter Email">
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="main-footer" class="text-center p-4">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p>Copyright 2017 &copy; Glozzom</p>
+        </div>
+      </div>
+    </div>
+  </footer> -->
+
+
+  <!-- VIDEO MODAL -->
+  <div class="modal fade" id="videoModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button class="close" data-dismiss="modal"><span>&times;</span></button>
+          <iframe src="" height="350" width="100%" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOPPING CART MODAL -->
+  <div class="modal fade" id="shoppingCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content bg-light">
+        <div class="modal-header">
+          <h4 class="modal-title text-center m-auto" id="contactModalTitle">Can I take your order?</h4>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"><i class="fa fa-times-circle text-danger"></i></span>
+          </button> -->
+        </div>
+        <div class="modal-body">
+          <div>
+            <div class="col-4 float-left">
+              <img src="./img/aaloo.jpg" alt="" class="img-thumbnail">
+            </div>
+            <div class="col-8 float-right">
+              <h4>Name  <i class="fa fa-heart-o ml-2 font-weight-bold"></i></h4>
+              <div>
+                QTY : <select class="custom-select w-25 ml-1" id="inputGroupSelect01">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+                <button class="btn m-2 text-danger"><i class="fa fa-trash-o"></i></button>
+              </div>
+            </div>
+            <!-- <div class="divider"></div> -->
+          </div>
+        </div>
+        <div class="modal-body">
+          <div>
+            <div class="col-4 float-left">
+              <img src="./img/aaloo.jpg" alt="" class="img-thumbnail">
+            </div>
+            <div class="col-8 float-right">
+              <h4>Name  <i class="fa fa-heart-o ml-2 font-weight-bold"></i></h4>
+              <div>
+                QTY : <select class="custom-select w-25 ml-1" id="inputGroupSelect01">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+                <button class="btn m-2 text-danger"><i class="fa fa-trash-o"></i></button>
+              </div>
+            </div>
+            <!-- <div class="dropdown-divider"></div> -->
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="total" class="d-inline">TOTAL : </label>
+              <div class="input-group mb-3 w-50 float-right mr-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text " for="inputGroupSelect01"><i class="fa fa-inr"></i></label>
+                </div>
+                <input type="number" class="form-control " value="" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-ban"></i> Cancel</button>
+          <button type="submit" class="btn btn-success"><i class="fa fa-check-circle"></i> Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

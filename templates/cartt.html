@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CART</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.css" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='home.css') }}">
+  <!--link rel="stylesheet" href="css/home.css"-->
+</head>
+<!-- <body> -->
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-md navbar-light mb-3">
+    <div class="container py-0">
+      <a href="#"  id="branding" class="navbar-brand animated zoomIn"></a>
+        <a href="{{url_for('checkout')}}" class="d-md-none ml-auto"><span class="fa fa-shopping-basket"></span> <span class="badge badge-pill badge-danger">{{count}}</span></a>
+      <!-- </li> -->
+      <button class="navbar-toggler ml-2" data-toggle="collapse" data-target="#navNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navNav">
+          <ul class="navbar-nav ml-auto mr-2">
+            <li class="nav-items">
+               <!-- a href="{{ url_for('home')}}" -->
+              <a href="{{ url_for('home')}}" class="nav-link">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('add_cart')}}" class="nav-link">Order Food</a>   
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-user text-info"></i> {{userid}}
+              </a>
+              <div class="dropdown-menu bg-light text-danger">
+                <a href="{{ url_for('profile')}}" class="dropdown-item text-success">
+                  <i class="fa fa-user-circle  text-success"></i> Profile
+                </a>
+                <a href="#" class="dropdown-item text-warning">
+                  <i class="fa fa-heart text-warning"></i> Favourite
+                </a>
+                <a href="{{ url_for('logout')}}" class="dropdown-item text-danger">
+                  <i class="fa fa-user-times text-danger"></i> Logout
+                </a>
+              </div>
+            </li>
+            <li class="nav-items">
+              <a href="{{url_for('checkout')}}" class="nav-link d-none d-md-block"><span class="fa fa-shopping-basket"></span> <span class="badge badge-pill badge-danger">{{count}}</span></a>
+            </li>
+          </ul>
+          <!-- <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Search</button>
+          </form> -->
+          <form action="" class="form-inline mt-3">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-success" data-toggle="modal" data-target="#search" type="button"><i class="fa fa-search"></i></button>
+              </div
+            </div>
+          </form>
+
+      </div>
+    </div>
+  </nav>
+
+<body>
+
+  <h3 class="display-4 text-center mb-1">Your Basket</h3>
+  <div class="progress mb-3 m-0">
+  <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="100" aria-valuemax="100" style="width: 100%"></div>
+  </div>
+    {% for x in items %}
+<div class="row">
+  <div class="col-12 col-md-6 mb-4">
+    <div>
+      <div class="col-6 col-lg-3 float-left d-block mt-2 mt-lg-0">
+          
+        <img src="{{url_for('static', filename=''+x.product_image)}}"  alt="" class="img-thumbnail">
+      </div>
+        <div class="ml-3">
+          <div class="col-6 col-lg-9 float-right">
+            <h4>{{x.product_name}}</h4>
+              <h4>Price:<span class="price">{{x.product_price}}</span></h4>
+                 <div class="input-group">
+                   <span class="input-group-prepend">
+                       <button type="button" class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field="">
+                         <span class="fa fa-minus"></span>
+                       </button>
+                   </span>
+                   <input type="text" id="quantity" name="quantity" class="quantity form-control input-number" value="1" min="1" max="10" readonly>
+                   <span class="input-group-append">
+                       <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                           <span class="fa fa-plus"></span>
+                       </button>
+                   </span>
+                 </div>
+              
+             <div class="row">
+               <div class="col-6 mx-auto">
+                 <button class="btn btn-outline-danger btn-block mt-2 d-md-none d-inline"><i class="fa fa-trash-o"></i></button>
+               </div>
+               <div class="col-6 mx-auto">
+                 <button class="btn btn-outline-warning btn-block mt-2 d-md-none d-inline "><i class="fa fa-gratipay"></i></button>
+               </div>
+             </div>
+             <button class="remove btn mt-1 btn-block btn-outline-danger font-weight-bold d-md-block d-none"><i class="fa fa-trash-o"></i><span style="display: none">{{x.product_id}}</span>Remove
+              </button>
+           </div>
+        </div>
+      </div>
+  </div>
+</div>
+    {% endfor %}
+   
+    
+    
+
+<!-- FOOTER -->
+<div class="dropdown-divider mb-3"></div>
+<div class="row">
+  <div class="col-6 col-lg-8"><h4 class="text-right"><button type="submit" class="btn btn-danger w-25 ml-3 ml-lg-0" id="btntot"><i class="fa fa-calculator"></i>Total</button></h4></div>
+  <div class="col-6 col-lg-4">
+    <div class="input-group w-75">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fa fa-inr"></i></span>
+      </div>
+      <input type="number" class="form-control" id="totalamount" name="totamt" aria-label="Amount (to the nearest dollar)" value="" readonly>
+    </div>
+  </div>
+</div>
+
+<!-- SUBMIT -->
+<div class="row my-3">
+  <div class="col-5 col-lg-8"><h4 class="text-right"></h4></div>
+  <div class="col-7 col-lg-4">
+    <!-- <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-ban"></i> Cancel</button> -->
+    <button type="submit" class="btn btn-success w-75 ml-3 ml-lg-0" id="rzp-button1"><i class="fa fa-check-circle"></i>Pay Online</button><br><br>
+      <button type="submit" id="paywallet" class="btn btn-primary w-75 ml-3 ml-lg-0"><i class="fa fa-check-circle"></i>Pay with Wallet</button>
+  </div>
+</div>
+<div class="dropdown-divider mb-3"></div>
+    
+    
+    
+<!--    *****************SEARCH-MODAL**********************-->
+<div class="modal fade" id="search" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">SEARCH RESULTS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-5">
+            <img src="https://www.vegrecipesofindia.com/wp-content/uploads/2012/05/paneer-paratha-with-mango-pickle.jpg" alt="food-pic" class="img-fluid" style="height:100px;width:100px">
+          </div>
+          <div class="col-7">
+              <h4>Paneer Prathan</h4>
+              <h5><i class="fa fa-inr"></i> 25</h5>
+              <button type="submit" class="btn btn-success">Add To Cart</button>
+              <button type="submit" class="btn btn-">Order Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--******************************END OF SEARCH MODAL****************************-->
+    
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    $(document).ready(function(){
+var quantitiy=0;
+   $('.quantity-right-plus').click(function(e){
+        e.preventDefault();
+       // var quantity = parseInt($('#quantity').val());
+       var  quantity=parseInt($(this).parent().prev().val()) ;
+       if(quantity<10)
+          {
+              $(this).parent().prev().val(quantity + 1);
+          }  //$('#quantity').val(quantity + 1);
+           
+    });
+     $('.quantity-left-minus').click(function(e){
+        e.preventDefault();
+       // var quantity = parseInt($('#quantity').val());
+         var  quantity=parseInt($(this).parent().next().val()) ;
+            if(quantity>0){
+            //$('#quantity').val(quantity - 1);
+                $(this).parent().next().val(quantity + 1);
+            }
+    });
+});
+      //var i=0,total=0;
+    $(document).on('click','#btntot',function(){
+         var i=0,total=0;
+        var quant=[];
+        /*if($(this).hasClass('token')){$('.prc').each(function(){
+            
+            total+=((+$(this).html())* (+$('.quantity').eq(i).val()) );
+            i=i+1;
+          console.log(+$('.quantity').val());*/
+        $('h4 span.price').each(function(){
+            total+=((+$(this).html())*(+$('.quantity').eq(i).val()));
+            var n=+$('.quantity').eq(i).val();
+            quant.push(n);
+            i=i+1;
+            
+        });
+        console.log(total);
+        $('#totalamount').val(total);
+        //$('#totamt').html(total);
+        $.ajax({
+    url: "/cart",
+    type: "POST",
+    data: JSON.stringify({x: quant}),
+    contentType: "application/json; charset=utf-8",
+    success: function(dat){
+        console.log(data.message)
+        
+    }
+});
+        
+    });
+    
+    $(document.body).on('click','button.remove',function(e){
+       e.preventDefault();
+        var id= $(this).children('span').text();
+        console.log(id);
+        $.ajax({
+          url: 'http://localhost:5000/removeFromCart', //server url
+          type: 'POST',    //passing data as post method
+          dataType: 'json', // returning data as json
+          data: {pid:id},  //form values
+          success:function()
+          {
+            console.log("hello");  //response from the server given as alert message
+              //location.reload(true);
+          }
+        });
+        setTimeout(function() {
+                     window.location.href="cart";
+                    }, 1000);   
+        
+        //window.location.href="cart";
+        
+    });
+    
+    $(document.body).on('click','#paywallet',function(){
+        var total=$('#totalamount').val();
+        $.ajax({
+          url: 'http://localhost:5000/paywithwallet', //server url
+          type: 'POST',    //passing data as post method
+          dataType: 'json', // returning data as json
+          data: {debit:total},  //form values
+           success:function(data)
+        {console.log(data.message);
+            window.alert(data.message);
+            
+        } 
+        });
+        
+    });
+    
+    
+    $(document.body).on('click','#rzp-button1',function(){
+        var total=$('#totalamount').val();
+        
+         var options = {
+    "key": "rzp_test_ltGbBSkdqhYwIk",
+    "amount": (total*100), // 2000 paise = INR 20
+    "name": "Square One Private Limited",
+    "description": "Order Payment",
+    "image": "https://s3-media2.fl.yelpcdn.com/bphoto/r7MPtfAU06ECd0DjtuYt9Q/ls.jpg",
+    "handler": function (response){
+        alert(response.razorpay_payment_id);
+         $.ajax({
+          url: 'http://localhost:5000/invoicegenerate', //server url
+          type: 'POST',    //passing data as post method
+          dataType: 'json', // returning data as json
+          //data: {pid:id},  //form values
+          success:function(data)
+          {
+            console.log(data.message);  //response from the server given as alert message
+              alert(data.message)
+              
+              window.location.href=invoice/
+          }
+        });
+    },
+    "prefill": {
+        "name": " ",
+        "email": " "
+    },
+    "notes": {
+        "address": " "
+    },
+    "theme": {
+        "color": "#F37254"
+    }
+};
+var rzp1 = new Razorpay(options);
+
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+        
+    });
+</script>
+</body>
+</html>

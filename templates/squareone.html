@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Food Menu</title>
+    <style>
+        img{
+            height: 200px;
+        }
+    </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static',filename='menu.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+     <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-md navbar-light mb-3">
+    <div class="container py-0">
+      <a href="#"  id="branding" class="navbar-brand animated zoomIn"></a>
+        <a href="{{url_for('checkout')}}" class="d-md-none ml-auto"><span class="fa fa-shopping-basket"></span> <span class="badge badge-pill badge-danger" id="itemcount">{{count}}</span></a>
+      <!-- </li> -->
+      <button class="navbar-toggler ml-2" data-toggle="collapse" data-target="#navNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navNav">
+          <ul class="navbar-nav ml-auto mr-2">
+            <li class="nav-items">
+               <!-- a href="{{ url_for('home')}}" -->
+              <a href="{{ url_for('home')}}" class="nav-link">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('add_cart')}}" class="nav-link">Order Food</a>   
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-user text-info"></i> {{userid}}
+              </a>
+              <div class="dropdown-menu bg-light text-danger">
+                <a href="{{ url_for('profile')}}" class="dropdown-item text-success">
+                  <i class="fa fa-user-circle  text-success"></i> Profile
+                </a>
+                <a href="#" class="dropdown-item text-warning">
+                  <i class="fa fa-heart text-warning"></i> Favourite
+                </a>
+                <a href="{{ url_for('logout')}}" class="dropdown-item text-danger">
+                  <i class="fa fa-user-times text-danger"></i> Logout
+                </a>
+              </div>
+            </li>
+            <li class="nav-items">
+              <a href="{{url_for('checkout')}}" class="nav-link d-none d-md-block"><span class="fa fa-shopping-basket"></span> <span class="badge badge-pill badge-danger">{{count}}</span></a>
+            </li>
+          </ul>
+          <!-- <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Search</button>
+          </form> -->
+          <form action="" class="form-inline mt-3">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Search..."  aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-success" data-toggle="modal" data-target="#search" type="button"><i class="fa fa-search"></i></button>
+              </div
+            </div>
+          </form>
+
+      </div>
+    </div>
+  </nav>
+
+  </header>
+
+  <!-- JUMBOTRON & MENU-SECTION-->
+  <div class="jumbo jumbo-fluid">
+  <div class="container">
+    <h1 class="display-4 text-center font-italic text-dark pt-5">SQUARE ONE</h1>
+    <p class="text-center font-weight-bold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, itaque? </p>
+  </div>
+  <div class="d-flex flex-row text-white align-items-stretch text-center">
+    <div class=" menu-head p-4 bg-danger" data-toggle="collapse" data-target="#beverages">Veg</div>
+    <div class=" menu-head p-4 bg-secondary" data-toggle="collapse" data-target="#prathas">Non Veg</div>
+    <div class=" menu-head p-4 bg-primary" data-toggle="collapse" data-target="#combos">Drinks</div>
+    <div class=" menu-head p-4 bg-dark" data-toggle="collapse" data-target="#snacks">Snacks</div>
+  </div>
+</div>
+
+<div class="menu-items">                             
+  <!-- Veg MENU -->   
+  <div id="beverages" class="collapse show"> 
+    <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='alooparatha.jpg')}}"  style="height:150px;" alt="" class="w-100 img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Aloo Paratha</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">30</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="aloo30 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="aloo30 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='gobi.PNG')}}" style="height:150px;" alt="" class="w-100 img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Gobhi Paratha</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">30</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="gob30 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="gob30 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='paneerparatha.jpg')}}" style="height:150px;" alt="" class="w-100 img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Paneer Paratha</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">40</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="pan30 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="pan30 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='dahi.jpg')}}" style="height:150px;" alt="" class="w-100 img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Curd</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">20</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="cur20 btn btn-success mb-2 disabled" role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="cur20 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+       </div>
+  
+      <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='vegkathiroll.jpg')}}"  style="height:150px;" alt="" class="w-100 img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Veg Kathi Roll</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">30</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="vegkat30 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="vegkat30 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='maggi.jpg')}}" style="height:150px;" alt="" class="w-100 img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Maggi</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">25</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="mag25 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="mag25 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='cholebhature.jpg')}}" style="height:150px;" alt="" class="w-100 img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Chole Bhature</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">50</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="cho50 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="cho50 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='pavbhaji.jpg')}}" style="height:150px;" alt="" class="w-100 img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Pav Bhaji</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">40</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="pav40 btn btn-success mb-2 disabled" role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="pav40 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+       </div>
+      <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='vegthali.jpg')}}"  alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Veg Thali</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">150</h3></div>
+            <!-- <a href="#" class="btn btn-dark mb-2">Order Now</button> -->
+            <div class="d-inline"><button type="button"  class="vegtha150 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="vegtha150 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='dalmakhni.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Dal Makhani</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">25</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="dal25 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="dal25 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='chanamasala.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Chana Masala</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">25</h3></div>
+          
+            <div class="d-inline"><button type="button"  class="cha25 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="cha25 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='mixveg.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Mix Veg</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">25</h3></div>
+          
+            <div class="d-inline"><button type="button"  class="mix25 btn btn-success mb-2 disabled" role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="mix25 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+       </div>
+  
+      <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='paneerlababdaar.jpg')}}"  alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Paneer Lababdaar</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">50</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="panlab50 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="panlab50 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='roti.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Roti</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">5</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="rot5 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="rot5 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='lachaparantha.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Lacha Paratha</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">10</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="lac10 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="lac10 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='amritsarinaan.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Amritsari Naan</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">15</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="amrnaa15 btn btn-success mb-2 disabled" role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="amrnaa15 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+       </div>
+   
+      <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='butternaan.jpg')}}"  alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Butter Naan</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">15</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="butnaa15 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="butnaa15 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='naan.jpg')}}" alt="" class="img-fluid">'
+            <div class="card-title"><h2 class="mx-auto">Naan</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">10</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="naa10 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="naa10 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-danger">
+            <img src="{{url_for('static', filename='rice.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Rice</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">10</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="ric10 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="ric10 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      
+      </div>
+       </div>
+     
+      
+ 
+
+  <!-- Non-Veg MENU-->
+  <div id="prathas" class="collapse">
+    
+    <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='eggkathiroll.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Egg Kathi Roll</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">40</h3></div>
+        
+            <div class="d-inline"><button type="button"  class="egrol40 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="egrol40 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='ChickenKathiRoll.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Chicken Kathi Roll</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">70</h3></div>
+          
+            <div class="d-inline"><button type="button"  class="chickrol70 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="chickrol70 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='omlette.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Omelettes</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">30</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="omlet30 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="omlet30 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='boiledegg.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Boiled Egg</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">15</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="boilegg15 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="boilegg15 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+         <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='nonvegthali.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Non Veg Thali</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">250</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="nonvth250 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="nonvth250 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='butterchicken.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Butter Chicken</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">150</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="butchick150 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="butchick150 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+      
+  </div>
+
+  <!-- Drinks MENU -->
+  <div id="combos" class="collapse">
+   
+    <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='milkpacket.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Milk Packet</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">25</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="milk25 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="milk25 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='soyamilk.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Soya Milk Packet</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">30</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="soyamil30 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="soyamil30 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='colddrinks.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Cold Drinks</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">35</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="codr35 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="codr35 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='realjuice.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Real Juice</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">20</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="reju20 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="reju20 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+       <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='fruitbeer.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Fruit Beer</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">100</h3></div>
+          
+            <div class="d-inline"><button type="button"  class="frube100 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="frube100 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='flavouredmilk.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Flavoured Milk</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">200</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="flamilk200 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="flamilk200 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='minerealwater.PNG')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Minereal Water</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">20</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="minwat20 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="minwat20 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='patialasweetlassi.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Patiala Lassi Sweet</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">30</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="lassw30 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="lassw30 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+       <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='patialaSaltlassi.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Patiala Lassi Salt</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">30</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="lassa30 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="lassa30 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='tea.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Tea</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">10</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="tea10 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="tea10 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='coffee.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Coffee</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">10</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="coff10 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="coff10 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+
+  <!-- Snacks MENU -->
+  <div id="snacks" class="collapse"> 
+    <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='vegburger.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Veg Burger</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">35</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="vegbur35 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="vegbur35 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='grilledsandwich.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Grilled Sandwich</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">40</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="grilsand40 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="grilsand40 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='stuffedkulcha.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Stuffed Kulcha</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">20</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="stufkul20 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="stufkul20 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='samosa.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Samosa</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">10</h3></div>
+         
+            <div class="d-inline"><button type="button"  class="samo10 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="samo10 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+       <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='samosachaat.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Samosa Chaat</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">20</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="samocha20 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="samocha20 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='aloopatty.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Aloo Patty</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">15</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="alopat15 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="alopat15 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='paneerpatty.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Paneer Puff</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">20</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="panpuf20 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="panpuf20 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='alootikki.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Aloo Tikki</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">35</h3></div>
+         
+            <div class="d-inline"><button type="button"  class="alotik35 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="alotik35 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+       <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='frenchfries.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">French Fries</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">30</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="frefri30 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="frefri30 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='icecream.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Ice Creams</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">50</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="icecre50 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="icecre50 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='biscuits.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Biscuits</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">10</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="bisc10 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="bisc10 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='chocolates.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Chocolate</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">20</h3></div>
+         
+            <div class="d-inline"><button type="button"  class="choco20 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="choco20 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+       <div class="row no-gutters">
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='lays.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Lays</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">20</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="lays20 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="lays20 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='kurkure.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Kurkure</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">20</h3></div>
+           
+            <div class="d-inline"><button type="button"  class="kurk20 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="kurk20 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='madAngels.jpg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">Bingo MadAngels</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">20</h3></div>
+            
+            <div class="d-inline"><button type="button"  class="madang20 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="madang20 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 m-0">
+        <div class="card text-center bg-light">
+          <div class="card-block text-secondary">
+            <img src="{{url_for('static', filename='popcorn.jpeg')}}" alt="" class="img-fluid">
+            <div class="card-title"><h2 class="mx-auto">PopCorn</h2><h3 class=""><i class="fa fa-heart-o "></i></h3></div>
+            <div class="card-text pb-1"><h3 class="text-right d-inline">30</h3></div>
+         
+            <div class="d-inline"><button type="button"  class="popc30 btn btn-success mb-2 " role="button" aria-disabled="true">Add to Cart</button></div>
+            <div class="d-inline"><button type="button"  class="popc30 btn btn-warning mb-2"  role="button" aria-disabled="true">Order Now</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+      
+  </div>
+
+</div>
+
+      
+<!--    *****************SEARCH-MODAL**********************-->
+<div class="modal fade" id="search" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">SEARCH RESULTS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-5">
+            <img src="https://www.vegrecipesofindia.com/wp-content/uploads/2012/05/paneer-paratha-with-mango-pickle.jpg" alt="food-pic" class="img-fluid" style="height:100px;width:100px">
+          </div>
+          <div class="col-7">
+              <h4>Paneer Prathan</h4>
+              <h5><i class="fa fa-inr"></i> 25</h5>
+              <button type="submit" class="btn btn-success">Add To Cart</button>
+              <button type="submit" class="btn btn-">Order Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--******************************END OF SEARCH MODAL****************************-->
+      
+  <!-- JAVASCRIPT -->
+    
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    $('.menu-head').click(function(){
+      $('.collapse').collapse('hide');
+    });
+      
+    $(document.body).on('click','div.d-inline button',function(){
+      const prodId=$( this ).attr('class').split(' ')[0];
+      console.log(prodId);
+        $.ajax({
+          url: 'http://localhost:5000/menu', //server url
+          type: 'POST',    //passing data as post method
+          dataType: 'json', // returning data as json
+          data: {pid:prodId},  //form values
+          success:function()
+          {
+            console.log("hello");  //response from the server given as alert message
+          }
+        });
+        var text=$(this).text();
+        if(text=='Add to Cart'){
+            $(this).text('Added to Cart');
+            var tot=+$('#itemcount').text();
+            $('#itemcount').text(tot+1);
+            
+        }
+        else if(text=='Order Now'){
+            /*$.ajax({
+          url: 'http://localhost:5000/cart', //server url
+          type: 'GET',    //passing data as post method
+          //dataType: 'json', // returning data as json
+          //data: {pid:prodId},  //form values
+          success:function()
+          {window.location.href="cart";
+            console.log("GO TO CART");  //response from the server given as alert message
+          }
+        });*/
+            setTimeout(function() {
+                     window.location.href="cart";
+                    }, 800);   
+        }
+});
+  </script>
+</body>
+</html>

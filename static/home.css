@@ -1,0 +1,155 @@
+
+
+.reviewstar{
+  font-size: 50px !important;
+}
+
+.fa {
+    font-size: 25px;
+}
+
+.checked {
+    color: orange;
+}
+
+/* Three column layout */
+.side {
+    float: left;
+    width: 15%;
+    margin-top:10px;
+}
+
+.middle {
+    margin-top:10px;
+    float: left;
+    width: 70%;
+}
+
+/* Place text to the right */
+.right {
+    text-align: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* The bar container */
+.bar-container {
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    color: white;
+}
+
+/* Individual bars */
+.bar-5 {width: 80%; height: 18px; background-color: #4CAF50;}
+.bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
+.bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
+.bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
+.bar-1 {width: 15%; height: 18px; background-color: #f44336;}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+    .side, .middle {
+        width: 100%;
+    }
+    .right {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+body {
+  overflow-x: hidden; }
+
+  .navbar{
+    background-color: rgba(245, 245, 245, 0.8);
+    box-shadow: 2px 2px 5px #F3676E;
+  }
+  .nav-link{
+    font-size: 1.5rem;
+    margin:0 5px 0 5px;
+  }
+.carousel-item {
+  height: 450px; }
+
+.carousel-image-1 {
+  background: url("../img/image1.jpg");
+  background-size: cover; }
+
+.carousel-image-2 {
+  background: url("../img/image2.jpg");
+  background-size: cover; }
+
+.carousel-image-3 {
+  background: url("../img/image3.jpg");
+  background-size: cover; }
+
+.extfa  {
+  font-size: 55px; }
+
+#home-heading {
+  position: relative;
+  min-height: 200px;
+  background: url("../img/lights.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  text-align: center;
+  color: #fff; }
+
+.dark-overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+#video-play {
+  position: relative;
+  min-height: 200px;
+  background: url("../img/media.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: 0 -300px;
+  text-align: center;
+  color: #fff; }
+  #video-play a {
+    color: #fff; }
+
+footer#main-footer {
+  background: #000;
+  color: #fff; }
+
+#page-header {
+  height: 200px;
+  background: url("../img/image1.jpg");
+  background-position: 0 -360px;
+  background-attachment: fixed;
+  color: #fff;
+  border-bottom: 1px #eee solid;
+  padding-top: 50px; }
+
+#about img {
+  margin-top: -50px; }
+
+#faq .card {
+  border: #444; }
+  #faq .card a {
+    color: #fff;
+    text-decoration: none; }
+
+#faq .card-body, #faq .card-header {
+  background: #333; }

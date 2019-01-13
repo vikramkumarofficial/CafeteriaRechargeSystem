@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login Or Signup</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="background-image: url({{ url_for('static', filename='cookingchef2.jpeg') }})">
+ <div class="body-overlay">
+      <!-- NAVBAR -->
+      <header>
+        <nav class="navbar navbar-expand-sm navbar-light fixed-top">
+        <div class="container py-2">
+          <a href="#"  id="branding" class="navbar-brand animated zoomIn"></a>
+          <button class="navbar-toggler" data-toggle="collapse" data-target="#navNav"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navNav">
+            <ul class="navbar-nav ml-auto mr-2">
+              <li class="nav-items">
+                <a href=href="{{ url_for('home')}}" class="nav-link">HOME</a>
+                </li>
+              <!-- <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">EXPLORE</a>
+                    <div class="dropdown-menu bg-dark">
+                      <a href="" class="dropdown-item bg-danger">Square 1</a>
+                      <div class="dropdown-divider"></div>
+                      <a href="" class="dropdown-item bg-warning">Burgrill</a>
+                      <a href="" class="dropdown-item bg-success">Ice Patch</a>
+                    </div>
+                  </li> -->
+                <li class="nav-items">
+                <a href="#" class="nav-link">ABOUT</a>
+              </li>
+            </ul>
+            <form class="form-inline">
+              <button type="button" class="btn btn-outline-success btn-block mr-2" data-toggle="modal" data-target="#loginModal">LOG IN</button>
+            </form>
+        </div>
+      </div>
+    </nav>
+    </header>
+
+
+      <!-- *************** HOME - SECTION ************* -->
+    <section id="home-section" class="">
+    <div class="dark-overlay">
+      <div class="home-inner">
+        <div class="container py-5">
+          <div class="row">
+            <div class="col-lg-8 d-none d-lg-block ">
+              <h1 class="display-6 mt-5">A Place Where Taste Meets Quality</h1>
+              <div class="d-flex flex-row">
+                <div class="p-4 align-self-start">
+                  <i class="fa fa-glass pt-2"></i>
+                </div>
+                <div class="align-self-end p-4 animated rollIn">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae ex error aperiam autem voluptate voluptatum quam velit nam quis? Enim porro deserunt, reprehenderit repellendus illum expedita excepturi. Facilis, veniam, repudiandae?
+                </div>
+              </div>
+              <div class="d-flex flex-row">
+                <div class="p-4 align-self-start">
+                  <i class="fa fa-glass pt-2"></i>
+                </div>
+                <div class="align-self-end p-4 animated rollIn">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae ex error aperiam autem voluptate voluptatum quam velit nam quis? Enim porro deserunt, reprehenderit repellendus illum expedita excepturi. Facilis, veniam, repudiandae?
+                </div>
+              </div>
+              <div class="d-flex flex-row">
+                <div class="p-4 align-self-start">
+                  <i class="fa fa-glass pt-2"></i>
+                </div>
+                <div class="align-self-end p-4 animated rollIn">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae ex error aperiam autem voluptate voluptatum quam velit nam quis? Enim porro deserunt, reprehenderit repellendus illum expedita excepturi. Facilis, veniam, repudiandae?
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card text-centre card-form my-3">
+                <div class="card-body">
+                  <h3>Please Sign Up Today</h3>
+                    <p>Please Sign Up This Form To Register</p>
+                    <div class="form-group ">
+                        <form action="/signup" method="post">
+                      <input type="text" class="form-control form-control-lg my-1" placeholder="First-Name" name="fname">
+                      <input type="text" class="form-control form-control-lg my-1" placeholder="Last-Name" name="lname">
+                      <input type="number" class="form-control form-control-lg my-1" placeholder="College-Id" name="roll">
+                    <input type="email" class="form-control form-control-lg my-1" placeholder="Email" name="email">
+                      <input type="password" class="form-control form-control-lg my-1" placeholder="Password" name="password">
+                      <input type="password" class="form-control form-control-lg my-1" placeholder="Confirm-Password" name="cpassword">
+                      <button class="btn btn-success btn-block my-1" type="submit">SUBMIT</button>
+                            </form>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+
+
+
+
+    <!-- *********************** HOME-FOOTER ******************* -->
+    <footer id="main-footer" class=" text-info">
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <h3 class="h3 pt-2">$huVik-Cj</h3>
+            <p class="">Copyright &copy; 2018</p>
+            <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#contactModal">ContactUs</button>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+    <!-- ************************* CONTACT-MODAL ******************** -->
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-secondary">
+          <div class="modal-header">
+            <h5 class="modal-title " id="contactModalTitle">Contact Us</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"><i class="fa fa-times-circle text-danger"></i></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/contact" method="post">
+              <!-- NAME -->
+                <div class="form-group">
+                  <label for="cname">Name</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01"><i class="fa fa-user-md"></i></label>
+                    </div>
+                    <input type="text" class="form-control is-valid" placeholder="Name" name="fname">
+                  </div>
+                </div>
+                <!-- EMAIL -->
+                <div class="form-group">
+                  <label for="cemail">Email</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01"><i class="fa fa-envelope"></i></label>
+                    </div>
+                    <input type="text" class="form-control is-valid" placeholder="Email" name="email">
+                  </div>
+                </div>
+                <!-- TEXT-AREA -->
+                <div class="form-group">
+                  <label for="cmessage">Message</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01"><i class="fa fa-pencil"></i></label>
+                    </div>
+                    <textarea class="form-control" placeholder="Your valuable suggestions here." name="suggest"></textarea>
+                  </div>
+                </div>
+              
+            
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-open"></i> SUBMIT</button>
+          </div>
+              </form>
+              </div>
+        </div>
+      </div>
+    </div>
+  <!-- ************************* LOGIN-MODAL ******************** -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content bg-light border border-success">
+        <div class="modal-header">
+          <h5 class="modal-title " id="contactModalTitle">Log In</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/login" method="post">
+            <div class="form-group">
+              <label for="Name">College Id</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01"><i class="fa fa-user"></i></label>
+                </div>
+                <input type="number" class="form-control " name="roll" placeholder="Roll No.">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Name">Password</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01"><i class="fa fa-key"></i></label>
+                </div>
+                <input type="password" class="form-control " name="password" placeholder="Password">
+              </div>
+            </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle"></i> Close</button>
+          <button type="submit" class="btn btn-success"><i class="fa fa-unlock"></i> SUBMIT</button>
+        </div>
+            </form>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- JAVASCRIPT -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</body>
+</html>
